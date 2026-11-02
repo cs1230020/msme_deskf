@@ -41,6 +41,8 @@
 
 Jurisdiction: India (MSMED Act 2006 s.2(b), s.15; Income-tax Act 1961 s.43B(h) to FY 2025-26; Income-tax Act 2025 s.37(2)(g) from tax year 2026-27). All test data is synthetic.
 
+{\footnotesize\textbf{Terms used.} \textit{Micro or small enterprise}: a small supplier, by investment and turnover limits. \textit{Udyam}: the government registration that certifies a firm as micro, small or medium; its \textit{NIC code} says what the firm does (codes 45 to 47 mean trading). \textit{CA}: chartered accountant, the auditor who signs the tax audit report (\textit{Form 3CD}; \textit{Form 26} from 2026-27). \textit{PO}: purchase order. \textit{GRN}: goods-received note. \textit{ERP}: the buyer's accounting system. \textit{LLM}: a large language model, the AI. \textit{Disallowed}: added back to taxable profit this year, deductible only in the year the bill is paid.\par}
+
 \needspace{7\baselineskip}\section*{1. Area explored, and what surprised me}
 
 Since FY 2023-24 a buyer may deduct a sum owed to a micro or small enterprise only in the year it is paid, if it pays after the MSMED Act limit: 15 days from acceptance, or up to 45 days if agreed in writing. Paying before the return due date does not help.
@@ -71,24 +73,26 @@ Since FY 2023-24 a buyer may deduct a sum owed to a micro or small enterprise on
   \textbf{Cost today:} emailing vendors for certificates, reading POs, a spreadsheet. My unvalidated estimate: 100+ person-hours for 300 small-supplier vendors and 1,000 open invoices. Errors cut both ways: over-stating pays tax a year early; under-stating brings a demand with interest, under the CA's signature. At the 25.17\% company rate, each Rs~1 crore misclassified moves about Rs~25 lakh of tax between years.
 \end{itemize}
 
+\textbf{A simple example.} A small manufacturer delivers parts worth Rs~3,60,000 on 1 Feb 2026; the PO allows 45 days, so payment is due by 18 Mar. The buyer pays on 10 Apr. Because the bill was late and still unpaid on 31 March, the buyer cannot deduct the Rs~3,60,000 in FY 2025-26; the deduction moves to the next year. At the 25.17\% company tax rate, that is about Rs~90,600 of tax paid a year early. Had the buyer complained in writing about defects within 15 days of delivery, the clock would restart once the defects were fixed, and the answer could be Rs~0. Finding that one date in an email is the hard part.
+
 \textbf{Why it matters, and why now.} Small enterprises have 2,56,892 delayed-payment cases worth Rs~55,244 crore on the government's Samadhaan portal, Rs~20,979 crore still pending (14 Aug 2026). Late payment also carries non-deductible MSMED s.16 interest at three times the bank rate, compounded monthly: 17.25\% a year since the 7 Oct 2026 rate hike. Tax year 2026-27 brings a new Act and a new audit form, so every firm's working papers change now.
 
 \textbf{Out of scope:} computing s.16 interest; the GST part of invoices; verifying certificates on the Udyam portal; the supplier's side; MSME-1 filing; and any decision the law leaves to a qualified person, which the tool asks rather than answers.
 
 \needspace{7\baselineskip}\section*{3. Solution design}
 
-\textbf{The LLM turns documents into quoted facts. Code checks every quote, applies a dated rule pack and recomputes the figure under every reading that survives. The CA sees only invoices whose figure depends on a doubt.}
+\textbf{The AI only reads the documents, and must quote its source for every fact. Ordinary code checks each quote, applies the law and recomputes the rupee figure under every plausible reading. The CA sees only invoices whose figure depends on a doubt.}
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{In:} Udyam certificate, PO or contract, supplier invoice, QC and email notes; GRN, invoice and payment dates and amounts from the ERP.
+  \textbf{In:} Udyam certificate, PO or contract, supplier invoice, quality-check and email notes; GRN, invoice and payment dates and amounts from the ERP.
 \item
   \textbf{The AI:} extracts five facts per vendor (type for the year, activity, registration date, payment term, written objections), each with a verbatim quote and any other defensible reading. It never computes a date or decides whether the law applies.
 \item
   \textbf{Out:} per invoice, the amount disallowed, the rule ids and citations behind it, and the quotes; totals for Form 3CD clause 22 or Form 26.
 \item
-  \textbf{A person:} answers review questions, decides each judgment call once for the firm, and signs the rule pack and the working paper.
+  \textbf{A person:} answers review questions, decides each judgment call once for the firm, and signs off the rules in the code and the final working paper.
 \end{itemize}
 
 \begin{center}\includegraphics[width=0.66\linewidth]{architecture.png}\end{center}\vspace{-4pt}
@@ -122,10 +126,10 @@ The law: 15/45 days, acceptance, 31 March test, which Act and form & Exact & 12 
 Judgment calls (invoice-only terms, capital purchases) & Exact once decided & Policy file signed by the CA & When the CA changes it \\
 Dates and amounts & Exact & ERP ledger & n/a \\
 What a document says & Probabilistic & LLM reading, with quotes & Per document \\
-Whether a doubt matters & Exact & Rupee sensitivity check & n/a \\
+Whether a doubt matters & Exact & Recompute under every reading & n/a \\
 \end{longtable}
 
-\textbf{Uncertainty is measured in rupees, not model confidence.} The engine runs on every reading that survives the guards: the LLM's, its alternates, the regex reader's when it differs, and the full range when a guard fails. Same disallowance on every run: settled automatically. Different: one question, with the rupee figure for each answer. Confidence scores are poorly calibrated, and a confident reading can still be a legal judgment.
+\textbf{Doubt is measured in rupees, not in how confident the model says it is.} For each fact the code takes every plausible reading: the AI's, the alternatives it flagged, that of a simple pattern-matching reader with no AI, and the full range of values when a fact fails its checks. It recomputes the disallowance for each. Same figure every time: the doubt does not matter, and the invoice is settled automatically. Different figures: the CA gets one question, with the rupee amount each answer leads to. A model's own confidence score is a poor guide, and a confident reading can still hide a legal judgment.
 
 \begin{itemize}
 \tightlist
@@ -137,9 +141,9 @@ Whether a doubt matters & Exact & Rupee sensitivity check & n/a \\
 
 Disallowance can only fall as the due date moves later, so a doubt about a date needs only its earliest and latest readings.
 
-\textbf{Mistakes are caught before the engine.} A quote must exist verbatim in the named document. It must come from the right kind of document: enterprise type only from the Udyam certificate, which also defeats instructions planted in a PO. It must contain the value it supports: the date, the days (in digits, words or Hindi), the right FY row. A payment term must come from a sentence about payment. A fact that fails becomes unknown; it is never used silently.
+\textbf{``Guards'': simple code checks that catch the AI's mistakes before any calculation.} A quote must exist word for word in the named document. It must come from the right kind of document: enterprise type only from the Udyam certificate, which also defeats instructions planted in a PO. It must contain the value it supports: the date, the days (in digits, words or Hindi), the right FY row. A payment term must come from a sentence about payment. A fact that fails becomes unknown; it is never used silently.
 
-\textbf{Why AI at all.} A careful regex reader got the payment term right for 12 of 18 vendors. It missed terms in words or Hindi, an objection dated ``Thu, 12 Mar 2026'', a trader whose certificate says ``Services'', and a delivery period inside the payment sentence. Real POs vary far more. Today a person reads them; the AI replaces that reading and nothing else.
+\textbf{Why AI at all.} A careful pattern-matching reader with no AI got the payment term right for 12 of 18 vendors. It missed terms in words or Hindi, an objection dated ``Thu, 12 Mar 2026'', a trader whose certificate says ``Services'', and a delivery period inside the payment sentence. Real POs vary far more. Today a person reads them; the AI replaces that reading and nothing else.
 
 \needspace{7\baselineskip}\section*{5. What I considered and rejected}
 
@@ -160,14 +164,14 @@ One LLM call: ``how much is disallowed?'' & Law and date arithmetic inside the m
 Retrieval over the Act & The law here is about twelve sentences. As code it is cited and tested; retrieval adds a failure mode, not knowledge. Retrieval stays useful for vendor documents. \\
 Several agents (reader, ``lawyer'', calculator) & More places to be wrong. The ``lawyer'' is better as rules a CA can read in ten minutes. \\
 Escalate on low model confidence & Poorly calibrated, and blind to whether the fact matters. \\
-Rules and regex only & 6 of 19 invoices got a wrong figure with no warning. Kept as a second reader. \\
+Rules and pattern-matching only, no AI & 6 of 19 invoices got a wrong figure with no warning. Kept as a second, independent reader. \\
 Fine-tuning a model & No labelled data, and the law changes yearly. Judgments go to a policy file. \\
 Vendor self-declarations & Useful, but they give no payment terms or acceptance dates, and still need checking. \\
 \end{longtable}
 
 \needspace{7\baselineskip}\section*{6. Risks}
 
-\textbf{The weakest point is a misreading two readers share.} If the LLM reads ``material to be delivered within 30 days of this order; payment as per our usual practice'' as a 30-day payment term, the quote is real, mentions payment and contains 30, and the regex reader agrees. Nothing flags it. It is the one silent error left in fault injection. Next to try: a second model family, and a check on which noun the number belongs to.
+\textbf{The weakest point is a misreading two readers share.} If the LLM reads ``material to be delivered within 30 days of this order; payment as per our usual practice'' as a 30-day payment term, the quote is real, mentions payment and contains 30, and the pattern-matching reader agrees. Nothing flags it. It is the one silent error left in fault injection. Next to try: a second AI model from another vendor, and a check on which word the number belongs to.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
@@ -185,16 +189,16 @@ What is left
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Wrong answers & Quote guards, rupee sensitivity, a second reader, a NIC-code rule and an objection tripwire. In 154 injected-error runs, silent wrong figures fell from 60 to 1. & Shared misreadings; real documents are messier than mine. \\
-Outdated rules & Dated, cited rule pack; one test per rule; the engine stops after the review date; a watch-list names pending changes. & A person must re-verify on time. \\
+Wrong answers & Quote checks, recomputing under every reading, a second reader, a trader-code rule and a scan of notes for complaint words. In 154 test runs with a planted AI error, wrong figures with no warning fell from 60 to 1. & Shared misreadings; real documents are messier than mine. \\
+Outdated rules & The law is 12 rules in code, each citing its source and the years it applies; one test per rule; the engine stops after the review date; a watch-list names pending changes. & A person must re-verify on time. \\
 Confidential data & Send only the four document types, bank and PAN numbers masked. In production, a model in the firm's own tenancy or self-hosted; free hosted models only for synthetic data. & Documents still leave the ERP. \\
-Liability, tax advice & The tool prepares working papers. The CA who signs the audit report stays accountable, signs the rule pack and policy, and answers every judgment call. Each figure shows its rule and quote. & Rubber-stamping; the desk shows what was automatic and why. \\
+Liability, tax advice & The tool prepares working papers. The CA who signs the audit report stays accountable, signs off the rules and the firm's policy choices, and answers every judgment call. Each figure shows its rule and quote. & Rubber-stamping; the desk shows what was automatic and why. \\
 Fake or stale certificate & Production should verify the Udyam number on the government portal. & Not built. \\
 \end{longtable}
 
 \needspace{7\baselineskip}\section*{7. Prototype: what I built and where it fails}
 
-\textbf{A dependency-free Python prototype and a clickable review desk (\texttt{desk/review\_desk.html} in the repo), tested on 18 synthetic vendors (19 invoices) that I wrote and labelled by hand.} The cases cover the 45-day cap, no written term, a trader, a supplier that became Medium, objections inside and outside 15 days, terms in words and in Hindi, an invoice-only term, late registration, a capital purchase, part-payments and a prompt injection.
+\textbf{A dependency-free Python prototype and a clickable review screen for the CA (each flagged invoice with its quote, its question and the rupee figure for each answer), tested on 18 synthetic vendors (19 invoices) that I wrote and labelled by hand.} The cases cover the 45-day cap, no written term, a trader, a supplier that became Medium, objections inside and outside 15 days, terms in words and in Hindi, an invoice-only term, late registration, a capital purchase, part-payments and a prompt injection.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
@@ -210,31 +214,31 @@ Result
 \bottomrule\noalign{}
 \endlastfoot
 Engine against my hand-computed answers & 19 of 19 \\
-Regex reader alone & 6 of 19 get a wrong figure with no warning \\
-Correct reading with guards and cross-checks & 16 automatic and right; the invoice-only term correctly asked; 2 extra reviews from the second reader \\
+Pattern-matching reader alone, no AI & 6 of 19 get a wrong figure with no warning \\
+Correct reading, with all checks on & 16 automatic and right; the invoice-only term correctly asked; 2 extra reviews from the second reader \\
 \end{longtable}
 
-\textbf{Fault injection} tests the guards rather than one model: one LLM-style error per run (an invented quote, a wrong value with a real quote, the wrong clause, a missed objection) on otherwise-correct facts. 154 runs.
+\textbf{Does the system notice when the AI is wrong?} In each of 154 runs I planted one typical AI mistake (an invented quote, a wrong value with a real quote, the wrong clause, a missed complaint) in otherwise-correct facts, and counted what happened (``fault injection'').
 
 \begin{longtable}[]{@{}llll@{}}
 \toprule\noalign{}
-Setup & Right, automatic & Sent to review & Wrong, no flag \\
+Setup & Right, no human needed & Sent to a human & Wrong, no warning \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Trust the reader & 94 & 0 & 60 \\
-Guards + rupee sensitivity & 83 & 67 & 4 \\
-+ second reader, NIC rule, tripwire & 80 & 73 & 1 \\
+Trust the AI's reading & 94 & 0 & 60 \\
++ quote checks, recompute every reading & 83 & 67 & 4 \\
++ second reader, trader rule, complaint scan & 80 & 73 & 1 \\
 \end{longtable}
 
-The evaluation changed the design. The first run left 4 silent errors. Two came from a trader whose certificate says ``Services''; I moved that signal from the prompt into code (every NIC code in divisions 45 to 47 means a trader). One was a missed objection, which no quote check can catch; I added a tripwire on objection words in the notes.
+The evaluation changed the design. The first run left 4 silent errors. Two came from a trader whose certificate says ``Services''; I moved that signal from the AI's instructions into code (any NIC code from 45 to 47 means a trader). One was a missed complaint, which no quote check can catch; I added a scan of the notes for complaint words that forces a review.
 
-\textbf{Where it fails.} (1) The shared misreading in section 6. (2) I wrote the cases, so they test the rules, not scans, tables or multi-PO contracts. (3) Fault injection measures the guards against errors I chose, not how often a real model makes them. (4) The live run on a free OpenRouter model (\texttt{eval/run\_eval.py\ -\/-llm}) has not been run yet; the harness, prompt and response cache are ready. (5) The second reader costs 2 reviews in 19 even with a perfect reading.
+\textbf{Where it fails.} (1) The shared misreading in section 6. (2) I wrote the cases, so they test the rules, not scans, tables or multi-PO contracts. (3) The planted-error test measures the checks against errors I chose, not how often a real model makes them. (4) I have not yet run the full test on a live AI model (a free OpenRouter model); the test code and the AI's instructions are ready. (5) The second reader costs 2 reviews in 19 even with a perfect reading.
 
 \needspace{7\baselineskip}\section*{8. Other jurisdictions, and what I would do before spending more time}
 
-\textbf{Another country changes the rule pack and the supplier registry; the reader, guards and sensitivity check carry over.} India is unusual in tying late payment to tax deductibility. Elsewhere the same pipeline would produce a late-payment interest claim or a payment-practices report instead of a tax add-back.
+\textbf{Another country changes the rules in the code and the supplier registry; the AI reader, the quote checks and the recompute-every-reading step carry over.} India is unusual in tying late payment to tax deductibility. Elsewhere the same pipeline would produce a late-payment interest claim or a payment-practices report instead of a tax add-back.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -242,7 +246,7 @@ The evaluation changed the design. The first run left 4 silent errors. Two came 
 \item
   \textbf{Practitioners first.} An hour each with a manufacturer's accounts team and a tax auditor, plus a dozen redacted POs, certificates and QC emails, to test my assumptions and the real time cost.
 \item
-  \textbf{Two model families on real documents,} counting the mistakes they share. That number decides whether the weakest point is acceptable.
+  \textbf{Two AI models from different vendors on real documents,} counting the mistakes they share. That number decides whether the weakest point is acceptable.
 \item
   \textbf{Udyam portal checks and ERP feeds} for certificates, the vendor master and GRN dates. Linking one supplier across the vendor master, its Udyam certificate, GSTIN and PAN is an entity-resolution problem that must be solved before any rule runs.
 \item
@@ -278,10 +282,10 @@ What the AI said & What I did instead, and how I knew \\
 \endlastfoot
 Late payment is ``permanently disallowed'' with ``severe tax penalties'' & Wrong. The section allows the deduction in the year the sum is actually paid, so it is a timing difference. The brief prices it as tax paid a year early, or a demand with interest if under-stated. \\
 Year-end test: ``unpaid on 31 March and due date before 31 March $\Rightarrow$ disallow'' & Misses a sum due in April and paid after its due date, which is also disallowed. Case C02 (60-day term capped to 45, due 6 Apr, paid 15 Apr) would show Rs~0 instead of Rs~9,80,000. \\
-Fuzzy quote matching, pass at 92--95\% similarity & A quote with one digit changed (``Net 80'' for C02's ``Net 60'') scores 97.6 and passes, and that is the error the guard exists for. I use an exact match after normalising whitespace and Unicode; OCR noise goes to review. \\
+Fuzzy quote matching, pass at 92--95\% similarity & A quote with one digit changed (``Net 80'' for C02's ``Net 60'') scores 97.6 and passes, and that is the error the quote check exists for. I use an exact match after normalising whitespace and Unicode; OCR noise goes to review. \\
 Kill switch on today's date, rule void after 1 Apr 2026 & It would block the FY 2025-26 audit, which happens April to September 2026. The law follows the year of the transaction: each rule has an FY window; only the pack's review date depends on today. \\
 Its fault-injection harness & It compared each mutated figure with the ground truth, which a real system never sees, never incremented its silent-failure counter, printed ``100\%'', and modelled prompt injection as a zeroed invoice amount, though amounts come from the ERP. Mine injects errors into the reader's output only and scores against hand labels the pipeline cannot see. \\
-Sensitivity by shifting payment dates $\pm$5 days and forcing the 15-day default & Payment dates are exact ledger data; perturbing them invents doubt and floods the review queue. I vary only facts read from documents. \\
+Testing doubt by shifting payment dates $\pm$5 days and forcing the 15-day default & Payment dates are exact ledger data; perturbing them invents doubt and floods the review queue. I vary only facts read from documents. \\
 ``Very large'' generated test set: 50 cases with model-written answers & Answers written by the model test the engine against the model. I kept 18 cases and labelled them by hand. \\
 A runtime error ``fixed'' with \texttt{.get()} defaults; code called ``an absolute masterpiece'' while it had syntax errors & Here a silently defaulted fact is a wrong rupee figure, so a missing fact becomes unknown and goes to review. I treated praise as no signal and trusted the tests. \\
 \end{longtable}}
@@ -291,9 +295,9 @@ A runtime error ``fixed'' with \texttt{.get()} defaults; code called ``an absolu
 \item \textbf{Doubt measured in rupees, not confidence} (the second prompt; Gemini only named it). Then: disallowance can only fall as the due date moves later, so a term tied to an undated event needs just its earliest and latest dates. That is how C17 settles Rs~1,10,000 without a question.
 \item \textbf{Judgment calls kept out of the model:} the invoice-only term is decided once by the CA as firm policy, never by the model and never per invoice.
 \item \textbf{The attack cases:} a delivery period next to the word payment, a trader declaring ``Services'', a Hindi clause in Devanagari (as a real PO would carry it, not Gemini's romanised line), an injected instruction in a PO, a term tied to an undated event. I defend the injection by where a fact may come from (enterprise type only from the Udyam certificate), not by prompt wording.
-\item \textbf{Letting the evaluation change the design:} Gemini mentioned the NIC trader codes; after fault injection I moved that check from the prompt into code, added the objection tripwire, and accepted 2 extra reviews in 19 as the price of a second reader.
+\item \textbf{Letting the evaluation change the design:} Gemini mentioned the NIC trader codes; after the planted-error test I moved that check from the AI's instructions into code, added the complaint-word scan, and accepted 2 extra reviews in 19 as the price of a second reader.
 \end{itemize}
 
-\textbf{One thing I'd defend without AI: the calculation by hand.} C07: goods delivered 1 Feb 2026. The written complaint is dated 21 Feb, day 20, outside the 15-day window, so acceptance stays 1 Feb. The PO says ``45 days from date of receipt'': due 18 Mar. Unpaid on 31 Mar, paid 10 Apr: all Rs~3,60,000 is disallowed for FY 2025-26 and deducted in 2026-27. Had the complaint come by 16 Feb and been closed on 1 Mar, acceptance moves to 1 Mar, the due date to 15 Apr, the payment is on time, and the figure is Rs~0. One date in an email moves Rs~3.6 lakh, which is why that date needs a verified quote and a tripwire, not a confidence score.
+\textbf{One thing I'd defend without AI: the calculation by hand.} C07: goods delivered 1 Feb 2026. The written complaint is dated 21 Feb, day 20, outside the 15-day window, so acceptance stays 1 Feb. The PO says ``45 days from date of receipt'': due 18 Mar. Unpaid on 31 Mar, paid 10 Apr: all Rs~3,60,000 is disallowed for FY 2025-26 and deducted in 2026-27. Had the complaint come by 16 Feb and been closed on 1 Mar, acceptance moves to 1 Mar, the due date to 15 Apr, the payment is on time, and the figure is Rs~0. One date in an email moves Rs~3.6 lakh, which is why that date needs a verified quote and a complaint-word scan, not a confidence score.
 
 \end{document}
