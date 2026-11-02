@@ -1,0 +1,22 @@
+{
+  "case": "C01",
+  "supplier": "Shree Ganesh Patterns",
+  "fy": "2025-26",
+  "po_date": "2026-02-20",
+  "capital": false,
+  "invoices": [
+    {
+      "no": "SGP/311",
+      "delivery": "2026-03-10",
+      "invoice_date": "2026-03-10",
+      "amount": 420000
+    }
+  ],
+  "payments": [
+    {
+      "invoice": "SGP/311",
+      "date": "2026-04-05",
+      "amount": 420000
+    }
+  ]
+}

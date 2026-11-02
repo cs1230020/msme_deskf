@@ -1,0 +1,48 @@
+{
+  "case": "C05",
+  "tests": "Supplier was Small in earlier years but is Medium for FY 2025-26 - outside s.43B(h).",
+  "facts": {
+    "category": {
+      "value": "medium",
+      "source": "udyam",
+      "quote": "3 | 2025-26 | Medium | 07/05/2025"
+    },
+    "activity": {
+      "value": "manufacturing",
+      "source": "udyam",
+      "quote": "MAJOR ACTIVITY : Manufacturing"
+    },
+    "registration_date": {
+      "value": "2020-07-15",
+      "source": "udyam",
+      "quote": "DATE OF UDYAM REGISTRATION : 15/07/2020"
+    },
+    "payment_term": {
+      "value": {
+        "days": 45,
+        "basis": "acceptance",
+        "instrument": "buyer_po"
+      },
+      "source": "po",
+      "quote": "Payment within 45 days from acceptance of material."
+    },
+    "objections": {
+      "value": [],
+      "source": "notes",
+      "quote": ""
+    }
+  },
+  "expected": {
+    "MFC/7731": {
+      "decision": "AUTO",
+      "disallowed": 0
+    }
+  },
+  "distractors": {
+    "category": {
+      "value": "small",
+      "source": "udyam",
+      "quote": "2 | 2024-25 | Small | 09/05/2024"
+    }
+  }
+}

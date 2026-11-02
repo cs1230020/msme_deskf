@@ -1,0 +1,42 @@
+{
+  "case": "C08",
+  "tests": "Term written in words, with an advance; only the balance is outstanding at year end.",
+  "facts": {
+    "category": {
+      "value": "micro",
+      "source": "udyam",
+      "quote": "1 | 2025-26 | Micro | 11/05/2025"
+    },
+    "activity": {
+      "value": "manufacturing",
+      "source": "udyam",
+      "quote": "MAJOR ACTIVITY : Manufacturing"
+    },
+    "registration_date": {
+      "value": "2022-02-09",
+      "source": "udyam",
+      "quote": "DATE OF UDYAM REGISTRATION : 09/02/2022"
+    },
+    "payment_term": {
+      "value": {
+        "days": 21,
+        "basis": "delivery",
+        "instrument": "buyer_po"
+      },
+      "source": "po",
+      "quote": "Payment: 50% advance with order; balance within twenty-one days of delivery."
+    },
+    "objections": {
+      "value": [],
+      "source": "notes",
+      "quote": ""
+    }
+  },
+  "expected": {
+    "OSE/118": {
+      "decision": "AUTO",
+      "disallowed": 0
+    }
+  },
+  "distractors": {}
+}

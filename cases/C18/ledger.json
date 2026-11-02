@@ -1,0 +1,38 @@
+{
+  "case": "C18",
+  "supplier": "Sri Venkateswara Bearings",
+  "fy": "2025-26",
+  "po_date": "2026-02-01",
+  "capital": false,
+  "invoices": [
+    {
+      "no": "SVB/1102",
+      "delivery": "2026-02-10",
+      "invoice_date": "2026-02-10",
+      "amount": 520000
+    },
+    {
+      "no": "SVB/1167",
+      "delivery": "2026-03-12",
+      "invoice_date": "2026-03-12",
+      "amount": 720000
+    }
+  ],
+  "payments": [
+    {
+      "invoice": "SVB/1102",
+      "date": "2026-03-30",
+      "amount": 520000
+    },
+    {
+      "invoice": "SVB/1167",
+      "date": "2026-04-20",
+      "amount": 300000
+    },
+    {
+      "invoice": "SVB/1167",
+      "date": "2026-05-02",
+      "amount": 420000
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "case": "C12",
+  "supplier": "Vishwakarma CNC Tools",
+  "fy": "2025-26",
+  "po_date": "2026-02-02",
+  "capital": true,
+  "invoices": [
+    {
+      "no": "VCT/0093",
+      "delivery": "2026-03-01",
+      "invoice_date": "2026-03-01",
+      "amount": 1850000
+    }
+  ],
+  "payments": [
+    {
+      "invoice": "VCT/0093",
+      "date": "2026-06-30",
+      "amount": 1850000
+    }
+  ]
+}

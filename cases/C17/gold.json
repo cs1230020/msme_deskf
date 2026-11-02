@@ -1,0 +1,42 @@
+{
+  "case": "C17",
+  "tests": "Term runs from an undated event (bill certification); outcome is the same whatever that date was.",
+  "facts": {
+    "category": {
+      "value": "micro",
+      "source": "udyam",
+      "quote": "1 | 2025-26 | Micro | 28/04/2025"
+    },
+    "activity": {
+      "value": "services",
+      "source": "udyam",
+      "quote": "MAJOR ACTIVITY : Services"
+    },
+    "registration_date": {
+      "value": "2021-07-01",
+      "source": "udyam",
+      "quote": "DATE OF UDYAM REGISTRATION : 01/07/2021"
+    },
+    "payment_term": {
+      "value": {
+        "days": 15,
+        "basis": "other",
+        "instrument": "buyer_po"
+      },
+      "source": "po",
+      "quote": "Payment within 15 days of submission of monthly bill duly certified by the Administration Manager."
+    },
+    "objections": {
+      "value": [],
+      "source": "notes",
+      "quote": ""
+    }
+  },
+  "expected": {
+    "ACS/03-26": {
+      "decision": "AUTO",
+      "disallowed": 110000
+    }
+  },
+  "distractors": {}
+}

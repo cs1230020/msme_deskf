@@ -1,0 +1,141 @@
+C01  Shree Ganesh Patterns   (reader: reference)
+  SGP/311    AUTO    disallowed Rs 0
+        [APP-01] supplier is 'micro', manufacturing, registered 2021-05-10
+        [ACC-01] delivered 2026-03-10
+        [DUE-02] agreed 30 days from delivery = 2026-04-09; cap 2026-04-24; due 2026-04-09
+        [TAX-1961] Rs 4,20,000 unpaid at 2026-03-31; Rs 4,20,000 paid by due 2026-04-09; Rs 0 disallowed for FY 2025-26, allowed in year of payment
+
+C02  Rathore Alloy Castings   (reader: reference)
+  RAC/1187   AUTO    disallowed Rs 9,80,000
+        [APP-01] supplier is 'small', manufacturing, registered 2020-08-02
+        [ACC-01] delivered 2026-02-20
+        [DUE-02] agreed 60 days from invoice = 2026-04-21; cap 2026-04-06; due 2026-04-06
+        [TAX-1961] Rs 9,80,000 unpaid at 2026-03-31; Rs 0 paid by due 2026-04-06; Rs 9,80,000 disallowed for FY 2025-26, allowed in year of payment
+
+C03  Jyoti Precision Machining   (reader: reference)
+  JPM/045    REVIEW  between Rs 0 and Rs 1,75,000
+      Q: Which payment term was agreed in writing?
+         - if no written payment term (15-day default): Rs 1,75,000
+         - if 30 days from delivery in the PO: Rs 0
+        [APP-01] supplier is 'micro', services, registered 2022-06-18
+        [ACC-01] delivered 2026-03-25
+        [DUE-01] no written agreement: due 2026-04-09
+        [TAX-1961] Rs 1,75,000 unpaid at 2026-03-31; Rs 0 paid by due 2026-04-09; Rs 1,75,000 disallowed for FY 2025-26, allowed in year of payment
+
+C04  Balaji Steel Traders   (reader: reference)
+  BST/2290   AUTO    disallowed Rs 0
+        [APP-02] supplier is a trader: outside s.15
+        [ACC-01] delivered 2026-01-20
+        [DUE-02] agreed 30 days from delivery = 2026-02-19; cap 2026-03-06; due 2026-02-19
+
+C05  Mehta Forge Components   (reader: reference)
+  MFC/7731   AUTO    disallowed Rs 0
+        [APP-01] supplier is 'medium' for FY 2025-26: not a micro/small 'supplier'
+        [ACC-01] delivered 2026-03-05
+        [DUE-02] agreed 45 days from acceptance = 2026-04-19; cap 2026-04-19; due 2026-04-19
+
+C06  Kaveri Refractories   (reader: reference)
+  KR/2231    REVIEW  between Rs 0 and Rs 2,10,000
+      Q: Was a written objection raised within 15 days of delivery, and when was it removed?
+         - if objection 2026-03-12 removed 2026-03-28: Rs 0
+         - if no written objection: Rs 2,10,000
+        [APP-01] supplier is 'micro', manufacturing, registered 2021-01-04
+        [ACC-01] delivered 2026-03-05
+        [ACC-02] written objection 2026-03-12 (within 15 days), removed 2026-03-28
+        [DUE-02] agreed 30 days from acceptance = 2026-04-27; cap 2026-05-12; due 2026-04-27
+        [TAX-1961] Rs 2,10,000 unpaid at 2026-03-31; Rs 2,10,000 paid by due 2026-04-27; Rs 0 disallowed for FY 2025-26, allowed in year of payment
+
+C07  Sai Hydraulics   (reader: reference)
+  SH/905     AUTO    disallowed Rs 3,60,000
+        [APP-01] supplier is 'small', manufacturing, registered 2021-03-23
+        [ACC-01] delivered 2026-02-01
+        [ACC-03] objection 2026-02-21 came 20 days after delivery: ignored
+        [DUE-02] agreed 45 days from delivery = 2026-03-18; cap 2026-03-18; due 2026-03-18
+        [TAX-1961] Rs 3,60,000 unpaid at 2026-03-31; Rs 0 paid by due 2026-03-18; Rs 3,60,000 disallowed for FY 2025-26, allowed in year of payment
+
+C08  Om Sai Electricals   (reader: reference)
+  OSE/118    AUTO    disallowed Rs 0
+        [APP-01] supplier is 'micro', manufacturing, registered 2022-02-09
+        [ACC-01] delivered 2026-03-20
+        [DUE-02] agreed 21 days from delivery = 2026-04-10; cap 2026-05-04; due 2026-04-10
+        [TAX-1961] Rs 4,00,000 unpaid at 2026-03-31; Rs 4,00,000 paid by due 2026-04-10; Rs 0 disallowed for FY 2025-26, allowed in year of payment
+
+C09  Laxmi Packaging Works   (reader: reference)
+  LPW/2602   REVIEW  between Rs 0 and Rs 2,95,000
+      Q: Does a payment term printed only on the supplier's own invoice count as a written agreement? (Decide once - it is saved as firm policy and applied to every vendor.)
+         - if does NOT count as a written agreement: Rs 2,95,000
+         - if counts as a written agreement: Rs 0
+        [APP-01] supplier is 'small', manufacturing, registered 2020-07-27
+        [ACC-01] delivered 2026-03-01
+        [DUE-03] term only on supplier invoice; treated as NO agreement per policy
+        [DUE-01] no written agreement: due 2026-03-16
+        [TAX-1961] Rs 2,95,000 unpaid at 2026-03-31; Rs 0 paid by due 2026-03-16; Rs 2,95,000 disallowed for FY 2025-26, allowed in year of payment
+
+C10  Navkar Fasteners   (reader: reference)
+  NF/0571    AUTO    disallowed Rs 0
+        [APP-01] supplier is 'none' for FY 2025-26: not a micro/small 'supplier'
+        [APP-03] Udyam registration 2026-04-15 is after the order date 2026-02-10
+        [ACC-01] delivered 2026-03-02
+        [DUE-02] agreed 30 days from delivery = 2026-04-01; cap 2026-04-16; due 2026-04-01
+
+C11  Durga Industrial Gases   (reader: reference)
+  DIG/7710   AUTO    disallowed Rs 0
+        [APP-01] supplier is 'micro', manufacturing, registered 2020-11-30
+        [ACC-01] delivered 2025-12-01
+        [DUE-02] agreed 30 days from delivery = 2025-12-31; cap 2026-01-15; due 2025-12-31
+        [TAX-1961] fully paid by 2026-03-31: deduction allowed this year (paid late: MSMED interest exposure)
+
+C12  Vishwakarma CNC Tools   (reader: reference)
+  VCT/0093   AUTO    disallowed Rs 0
+        [APP-04] capital purchase: outside s.43B(h) under firm policy
+        [ACC-01] delivered 2026-03-01
+        [DUE-02] agreed 30 days from acceptance = 2026-03-31; cap 2026-04-15; due 2026-03-31
+
+C13  Pioneer Heat Treaters   (reader: reference)
+  PHT/1544   AUTO    disallowed Rs 2,40,000
+        [APP-01] supplier is 'micro', services, registered 2021-10-06
+        [ACC-01] delivered 2026-01-15
+        [DUE-02] agreed 30 days from delivery = 2026-02-14; cap 2026-03-01; due 2026-02-14
+        [TAX-1961] Rs 2,40,000 unpaid at 2026-03-31; Rs 0 paid by due 2026-02-14; Rs 2,40,000 disallowed for FY 2025-26, allowed in year of payment
+
+C14  Shakti Rolls & Rings   (reader: reference)
+  SRR/0318   AUTO    disallowed Rs 14,00,000
+        [APP-01] supplier is 'small', manufacturing, registered 2019-08-19
+        [ACC-01] delivered 2026-03-10
+        [DUE-02] agreed 45 days from month_end = 2026-05-15; cap 2026-04-24; due 2026-04-24
+        [TAX-1961] Rs 14,00,000 unpaid at 2026-03-31; Rs 0 paid by due 2026-04-24; Rs 14,00,000 disallowed for FY 2025-26, allowed in year of payment
+
+C15  Ganga Wire Products   (reader: reference)
+  GWP/4417   AUTO    disallowed Rs 0
+        [APP-01] supplier is 'micro', manufacturing, registered 2020-12-12
+        [ACC-01] delivered 2026-03-15
+        [DUE-02] agreed 30 days from delivery = 2026-04-14; cap 2026-04-29; due 2026-04-14
+        [TAX-1961] Rs 3,30,000 unpaid at 2026-03-31; Rs 3,30,000 paid by due 2026-04-14; Rs 0 disallowed for FY 2025-26, allowed in year of payment
+
+C16  Krishna Pattern Shop   (reader: reference)
+  KPS/207    AUTO    disallowed Rs 5,60,000
+        [APP-01] supplier is 'micro', manufacturing, registered 2022-01-25
+        [ACC-01] delivered 2026-03-01
+        [DUE-02] agreed 30 days from delivery = 2026-03-31; cap 2026-04-15; due 2026-03-31
+        [TAX-1961] Rs 5,60,000 unpaid at 2026-03-31; Rs 0 paid by due 2026-03-31; Rs 5,60,000 disallowed for FY 2025-26, allowed in year of payment
+
+C17  Annapurna Canteen Services   (reader: reference)
+  ACS/03-26  AUTO    disallowed Rs 1,10,000
+        [APP-01] supplier is 'micro', services, registered 2021-07-01
+        [ACC-01] delivered 2026-03-31
+        [DUE-02] agreed 15 days from acceptance = 2026-04-15; cap 2026-05-15; due 2026-04-15
+        [TAX-1961] Rs 1,10,000 unpaid at 2026-03-31; Rs 0 paid by due 2026-04-15; Rs 1,10,000 disallowed for FY 2025-26, allowed in year of payment
+
+C18  Sri Venkateswara Bearings   (reader: reference)
+  SVB/1102   AUTO    disallowed Rs 0
+        [APP-01] supplier is 'small', manufacturing, registered 2020-10-20
+        [ACC-01] delivered 2026-02-10
+        [DUE-02] agreed 60 days from acceptance = 2026-04-11; cap 2026-03-27; due 2026-03-27
+        [TAX-1961] fully paid by 2026-03-31: deduction allowed this year (paid late: MSMED interest exposure)
+  SVB/1167   AUTO    disallowed Rs 4,20,000
+        [APP-01] supplier is 'small', manufacturing, registered 2020-10-20
+        [ACC-01] delivered 2026-03-12
+        [DUE-02] agreed 60 days from acceptance = 2026-05-11; cap 2026-04-26; due 2026-04-26
+        [TAX-1961] Rs 7,20,000 unpaid at 2026-03-31; Rs 3,00,000 paid by due 2026-04-26; Rs 4,20,000 disallowed for FY 2025-26, allowed in year of payment
+
+19 invoices: 16 automatic (total disallowed Rs 40,70,000), 3 to review.

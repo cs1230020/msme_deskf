@@ -1,0 +1,52 @@
+{
+  "case": "C01",
+  "tests": "Plain case: micro manufacturer, 30-day term from receipt, paid on time after year end.",
+  "facts": {
+    "category": {
+      "value": "micro",
+      "source": "udyam",
+      "quote": "2 | 2025-26 | Micro | 08/05/2025"
+    },
+    "activity": {
+      "value": "manufacturing",
+      "source": "udyam",
+      "quote": "MAJOR ACTIVITY : Manufacturing"
+    },
+    "registration_date": {
+      "value": "2021-05-10",
+      "source": "udyam",
+      "quote": "DATE OF UDYAM REGISTRATION : 10/05/2021"
+    },
+    "payment_term": {
+      "value": {
+        "days": 30,
+        "basis": "delivery",
+        "instrument": "buyer_po"
+      },
+      "source": "po",
+      "quote": "Payment shall be made within 30 days from the date of receipt of material at our works."
+    },
+    "objections": {
+      "value": [],
+      "source": "notes",
+      "quote": ""
+    }
+  },
+  "expected": {
+    "SGP/311": {
+      "decision": "AUTO",
+      "disallowed": 0
+    }
+  },
+  "distractors": {
+    "payment_term": {
+      "value": {
+        "days": 15,
+        "basis": "delivery",
+        "instrument": "buyer_po"
+      },
+      "source": "po",
+      "quote": "Delivery: within 15 days from the date of this Purchase Order."
+    }
+  }
+}

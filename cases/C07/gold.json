@@ -1,0 +1,51 @@
+{
+  "case": "C07",
+  "tests": "Objection raised 20 days after delivery (outside 15 days) does NOT move acceptance.",
+  "facts": {
+    "category": {
+      "value": "small",
+      "source": "udyam",
+      "quote": "1 | 2025-26 | Small | 19/04/2025"
+    },
+    "activity": {
+      "value": "manufacturing",
+      "source": "udyam",
+      "quote": "MAJOR ACTIVITY : Manufacturing"
+    },
+    "registration_date": {
+      "value": "2021-03-23",
+      "source": "udyam",
+      "quote": "DATE OF UDYAM REGISTRATION : 23/03/2021"
+    },
+    "payment_term": {
+      "value": {
+        "days": 45,
+        "basis": "delivery",
+        "instrument": "buyer_po"
+      },
+      "source": "po",
+      "quote": "Payment: 45 days from date of receipt."
+    },
+    "objections": {
+      "value": [
+        {
+          "invoice": "SH/905",
+          "raised": "2026-02-21",
+          "raised_quote": "21-02-2026: Complaint emailed to Sai Hydraulics - seal leakage on 3 cylinders from invoice SH/905.",
+          "removed": "2026-03-01",
+          "removed_quote": "01-03-2026: Seals replaced at our plant by Sai Hydraulics; complaint closed.",
+          "in_writing": true
+        }
+      ],
+      "source": "notes",
+      "quote": ""
+    }
+  },
+  "expected": {
+    "SH/905": {
+      "decision": "AUTO",
+      "disallowed": 360000
+    }
+  },
+  "distractors": {}
+}

@@ -1,0 +1,22 @@
+{
+  "case": "C17",
+  "supplier": "Annapurna Canteen Services",
+  "fy": "2025-26",
+  "po_date": "2025-04-01",
+  "capital": false,
+  "invoices": [
+    {
+      "no": "ACS/03-26",
+      "delivery": "2026-03-31",
+      "invoice_date": "2026-03-31",
+      "amount": 110000
+    }
+  ],
+  "payments": [
+    {
+      "invoice": "ACS/03-26",
+      "date": "2026-05-25",
+      "amount": 110000
+    }
+  ]
+}

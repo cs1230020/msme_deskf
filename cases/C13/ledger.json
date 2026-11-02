@@ -1,0 +1,16 @@
+{
+  "case": "C13",
+  "supplier": "Pioneer Heat Treaters",
+  "fy": "2025-26",
+  "po_date": "2026-01-05",
+  "capital": false,
+  "invoices": [
+    {
+      "no": "PHT/1544",
+      "delivery": "2026-01-15",
+      "invoice_date": "2026-01-15",
+      "amount": 240000
+    }
+  ],
+  "payments": []
+}

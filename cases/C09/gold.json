@@ -1,0 +1,43 @@
+{
+  "case": "C09",
+  "tests": "Term appears ONLY on the supplier's own invoice. Is that a 'written agreement'? A judgment call for the CA.",
+  "facts": {
+    "category": {
+      "value": "small",
+      "source": "udyam",
+      "quote": "1 | 2025-26 | Small | 05/05/2025"
+    },
+    "activity": {
+      "value": "manufacturing",
+      "source": "udyam",
+      "quote": "MAJOR ACTIVITY : Manufacturing"
+    },
+    "registration_date": {
+      "value": "2020-07-27",
+      "source": "udyam",
+      "quote": "DATE OF UDYAM REGISTRATION : 27/07/2020"
+    },
+    "payment_term": {
+      "value": {
+        "days": 45,
+        "basis": "invoice",
+        "instrument": "supplier_invoice_only"
+      },
+      "source": "invoice",
+      "quote": "Terms: Payment due within 45 days of invoice. Interest @18% p.a. thereafter."
+    },
+    "objections": {
+      "value": [],
+      "source": "notes",
+      "quote": ""
+    }
+  },
+  "expected": {
+    "LPW/2602": {
+      "decision": "REVIEW",
+      "if_policy_true": 0,
+      "if_policy_false": 295000
+    }
+  },
+  "distractors": {}
+}

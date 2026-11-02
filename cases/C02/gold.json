@@ -1,0 +1,42 @@
+{
+  "case": "C02",
+  "tests": "Agreed term (60 days) exceeds the statutory 45-day cap.",
+  "facts": {
+    "category": {
+      "value": "small",
+      "source": "udyam",
+      "quote": "1 | 2025-26 | Small | 14/04/2025"
+    },
+    "activity": {
+      "value": "manufacturing",
+      "source": "udyam",
+      "quote": "MAJOR ACTIVITY : Manufacturing"
+    },
+    "registration_date": {
+      "value": "2020-08-02",
+      "source": "udyam",
+      "quote": "DATE OF UDYAM REGISTRATION : 02/08/2020"
+    },
+    "payment_term": {
+      "value": {
+        "days": 60,
+        "basis": "invoice",
+        "instrument": "buyer_po"
+      },
+      "source": "po",
+      "quote": "Payment: Net 60 days from date of invoice."
+    },
+    "objections": {
+      "value": [],
+      "source": "notes",
+      "quote": ""
+    }
+  },
+  "expected": {
+    "RAC/1187": {
+      "decision": "AUTO",
+      "disallowed": 980000
+    }
+  },
+  "distractors": {}
+}

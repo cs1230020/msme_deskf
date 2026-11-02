@@ -1,0 +1,42 @@
+{
+  "case": "C12",
+  "tests": "Capital purchase (booked to Plant & Machinery) - outside s.43B(h) under the firm's stated policy; anchor date unknown.",
+  "facts": {
+    "category": {
+      "value": "small",
+      "source": "udyam",
+      "quote": "1 | 2025-26 | Small | 10/05/2025"
+    },
+    "activity": {
+      "value": "manufacturing",
+      "source": "udyam",
+      "quote": "MAJOR ACTIVITY : Manufacturing"
+    },
+    "registration_date": {
+      "value": "2019-02-14",
+      "source": "udyam",
+      "quote": "DATE OF UDYAM REGISTRATION : 14/02/2019"
+    },
+    "payment_term": {
+      "value": {
+        "days": 30,
+        "basis": "other",
+        "instrument": "buyer_po"
+      },
+      "source": "po",
+      "quote": "Payment within 30 days of installation."
+    },
+    "objections": {
+      "value": [],
+      "source": "notes",
+      "quote": ""
+    }
+  },
+  "expected": {
+    "VCT/0093": {
+      "decision": "AUTO",
+      "disallowed": 0
+    }
+  },
+  "distractors": {}
+}

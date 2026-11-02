@@ -1,0 +1,5 @@
+# runtime: none (standard library only)
+# tests: pytest
+# brief PDF: markdown, plus Chrome/Chromium on PATH
+pytest
+markdown

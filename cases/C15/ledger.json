@@ -1,0 +1,22 @@
+{
+  "case": "C15",
+  "supplier": "Ganga Wire Products",
+  "fy": "2025-26",
+  "po_date": "2026-03-02",
+  "capital": false,
+  "invoices": [
+    {
+      "no": "GWP/4417",
+      "delivery": "2026-03-15",
+      "invoice_date": "2026-03-15",
+      "amount": 330000
+    }
+  ],
+  "payments": [
+    {
+      "invoice": "GWP/4417",
+      "date": "2026-04-12",
+      "amount": 330000
+    }
+  ]
+}

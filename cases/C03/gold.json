@@ -1,0 +1,52 @@
+{
+  "case": "C03",
+  "tests": "No written payment term; the only number near 'payment' is a delivery period (distractor).",
+  "facts": {
+    "category": {
+      "value": "micro",
+      "source": "udyam",
+      "quote": "1 | 2025-26 | Micro | 21/04/2025"
+    },
+    "activity": {
+      "value": "services",
+      "source": "udyam",
+      "quote": "MAJOR ACTIVITY : Services"
+    },
+    "registration_date": {
+      "value": "2022-06-18",
+      "source": "udyam",
+      "quote": "DATE OF UDYAM REGISTRATION : 18/06/2022"
+    },
+    "payment_term": {
+      "value": {
+        "days": null,
+        "basis": null,
+        "instrument": "none"
+      },
+      "source": "po",
+      "quote": "Payment and delivery: material to be delivered within 30 days of this order; payment as per our usual practice."
+    },
+    "objections": {
+      "value": [],
+      "source": "notes",
+      "quote": ""
+    }
+  },
+  "expected": {
+    "JPM/045": {
+      "decision": "AUTO",
+      "disallowed": 175000
+    }
+  },
+  "distractors": {
+    "payment_term": {
+      "value": {
+        "days": 30,
+        "basis": "delivery",
+        "instrument": "buyer_po"
+      },
+      "source": "po",
+      "quote": "Payment and delivery: material to be delivered within 30 days of this order; payment as per our usual practice."
+    }
+  }
+}

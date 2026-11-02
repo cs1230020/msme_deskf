@@ -1,0 +1,324 @@
+<title>43B(h) Review Desk</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: a tax-audit working paper as a two-pane desk - queue of invoices on the left,
+   the one in hand on the right (answer, rule trail, evidence, source documents). */
+:root {
+  --paper: #F3F6F5; --surface: #FFFFFF; --ink: #15201C; --muted: #59655F; --line: #D7DFDB;
+  --ledger: #0D6A57; --ledger-soft: #E0EEE9;
+  --review: #9C5B00; --review-soft: #FAEED8;
+  --auto: #2B7549; --auto-soft: #E2F0E7;
+  --done: #2E5BA4; --done-soft: #E3EBF7;
+  --bad: #A7261E; --mark: #FFE59A;
+  --display: "IBM Plex Sans Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #0E1412; --surface: #151D1A; --ink: #E2EAE6; --muted: #98A6A0; --line: #283330;
+  --ledger: #52C3A7; --ledger-soft: #15302A; --review: #EFB45A; --review-soft: #36280F;
+  --auto: #6DCB93; --auto-soft: #142E1F; --done: #8FB3F0; --done-soft: #1A2740;
+  --bad: #F08C84; --mark: #5B4810; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --paper: #0E1412; --surface: #151D1A; --ink: #E2EAE6; --muted: #98A6A0; --line: #283330;
+  --ledger: #52C3A7; --ledger-soft: #15302A; --review: #EFB45A; --review-soft: #36280F;
+  --auto: #6DCB93; --auto-soft: #142E1F; --done: #8FB3F0; --done-soft: #1A2740;
+  --bad: #F08C84; --mark: #5B4810; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 14px; line-height: 1.5; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.num, td.amt, .amt { font-variant-numeric: tabular-nums; }
+button { font: inherit; color: inherit; }
+button:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--ledger); outline-offset: 2px; }
+
+header.top { border-bottom: 1px solid var(--line); background: var(--surface); }
+header.top .wrap { padding-block: 14px; display: flex; flex-wrap: wrap; gap: 6px 20px; align-items: baseline; justify-content: space-between; }
+.brand { font-family: var(--display); font-weight: 600; font-size: 20px; letter-spacing: .01em; }
+.brand .sec { color: var(--ledger); }
+.meta { color: var(--muted); font-size: 12.5px; }
+
+.summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; padding-block: 18px 8px; }
+.stat { border-left: 3px solid var(--line); padding: 2px 0 2px 12px; }
+.stat .k { font-size: 11.5px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); }
+.stat .v { font-family: var(--display); font-size: 26px; font-weight: 600; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.stat.review { border-color: var(--review); } .stat.auto { border-color: var(--auto); } .stat.money { border-color: var(--ledger); }
+.stat .sub { font-size: 12px; color: var(--muted); }
+.notice { padding-block: 6px 16px; color: var(--muted); font-size: 12.5px; }
+.notice b { color: var(--ink); font-weight: 600; }
+
+.desk { display: grid; grid-template-columns: minmax(250px, 330px) minmax(0, 1fr); gap: 20px; padding-block: 0 40px; align-items: start; }
+.queue { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.tabs { display: flex; border-bottom: 1px solid var(--line); }
+.tabs button { flex: 1; background: none; border: 0; padding: 10px 6px; font-size: 12.5px; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; }
+.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--ledger); font-weight: 600; }
+.qlist { list-style: none; margin: 0; padding: 0; max-height: 70vh; overflow-y: auto; }
+.qitem { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; padding: 10px 14px; border-bottom: 1px solid var(--line); cursor: pointer; }
+.qitem:hover { background: var(--ledger-soft); }
+.qitem[aria-current="true"] { background: var(--ledger-soft); box-shadow: inset 3px 0 0 var(--ledger); }
+.qitem .who { font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.qitem .inv { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.qitem .amt { text-align: right; font-weight: 500; }
+.pill { display: inline-block; font-size: 10.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: 1px 7px; border-radius: 3px; }
+.pill.REVIEW { background: var(--review-soft); color: var(--review); }
+.pill.AUTO { background: var(--auto-soft); color: var(--auto); }
+.pill.DONE { background: var(--done-soft); color: var(--done); }
+
+.detail { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 20px 22px 24px; min-width: 0; display: grid; gap: 22px; }
+.eyebrow { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.detail h2 { font-family: var(--display); font-size: 24px; font-weight: 600; margin: 2px 0 6px; text-wrap: balance; }
+.tests { font-size: 13px; color: var(--muted); max-width: 68ch; }
+.answer { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+.answer .big { font-family: var(--display); font-size: 34px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.answer .lbl { color: var(--muted); }
+h3 { font-size: 11.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 8px; font-weight: 600; }
+
+.ask { border: 1px solid var(--review); background: var(--review-soft); border-radius: 6px; padding: 14px 16px; display: grid; gap: 10px; }
+.ask p { margin: 0; font-weight: 500; max-width: 72ch; }
+.opts { display: grid; gap: 8px; }
+.opt { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: center; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 5px; padding: 9px 12px; cursor: pointer; }
+.opt:hover { border-color: var(--ink); }
+.opt .r { font-family: var(--display); font-weight: 600; font-size: 16px; font-variant-numeric: tabular-nums; }
+.policy { font-size: 12.5px; display: flex; gap: 8px; align-items: center; }
+.resolved { border: 1px solid var(--done); background: var(--done-soft); border-radius: 6px; padding: 12px 16px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: center; }
+.linkbtn { background: none; border: 0; color: var(--done); text-decoration: underline; cursor: pointer; padding: 0; }
+
+.trail { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.trail li { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 10px; }
+.rid { font-family: var(--mono); font-size: 11.5px; font-weight: 500; color: var(--ledger); padding-top: 1px; }
+.cite { display: block; color: var(--muted); font-size: 12px; }
+
+.facts { display: grid; gap: 10px; }
+.fact { border-top: 1px solid var(--line); padding-top: 10px; display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 4px 14px; }
+.fact .name { font-weight: 600; font-size: 13px; }
+.cand { display: grid; gap: 3px; margin-bottom: 6px; }
+.cand .val { font-weight: 500; }
+.origin { font-size: 11px; color: var(--muted); border: 1px solid var(--line); border-radius: 3px; padding: 0 5px; margin-left: 6px; white-space: nowrap; }
+.quote { font-family: var(--mono); font-size: 12px; background: var(--paper); border-left: 2px solid var(--ledger); padding: 4px 8px; overflow-wrap: anywhere; }
+.ok { color: var(--auto); font-size: 12px; } .fail { color: var(--bad); font-size: 12px; }
+
+.docs .doctabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.docs .doctabs button { background: none; border: 1px solid var(--line); border-radius: 4px; padding: 3px 10px; font-size: 12.5px; cursor: pointer; font-family: var(--mono); }
+.docs .doctabs button[aria-selected="true"] { border-color: var(--ink); background: var(--paper); }
+pre.doc { font-family: var(--mono); font-size: 12px; line-height: 1.6; background: var(--paper); border: 1px solid var(--line); border-radius: 5px; padding: 12px 14px; margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; max-height: 360px; overflow-y: auto; }
+pre.doc mark { background: var(--mark); color: inherit; padding: 0 1px; }
+.tablewrap { overflow-x: auto; }
+table.ledger { border-collapse: collapse; font-size: 12.5px; width: 100%; }
+table.ledger th, table.ledger td { text-align: left; padding: 5px 10px 5px 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
+table.ledger th { font-weight: 600; color: var(--muted); font-size: 11.5px; text-transform: uppercase; letter-spacing: .05em; }
+table.ledger td.amt { text-align: right; }
+.watch { font-size: 12.5px; color: var(--muted); display: grid; gap: 4px; padding-block: 0 32px; }
+.watch b { color: var(--ink); }
+
+@media (max-width: 820px) {
+  .summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .desk { grid-template-columns: minmax(0, 1fr); }
+  .qlist { max-height: 320px; }
+  .fact { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: no-preference) { .qitem, .opt { transition: background .12s, border-color .12s; } }
+</style>
+
+<header class="top"><div class="wrap">
+  <div class="brand"><span class="sec">43B(h)</span> Review Desk</div>
+  <div class="meta" id="meta"></div>
+</div></header>
+
+<section class="summary wrap" aria-label="Summary">
+  <div class="stat"><div class="k">Invoices checked</div><div class="v" id="s-n"></div><div class="sub" id="s-v"></div></div>
+  <div class="stat auto"><div class="k">Settled automatically</div><div class="v" id="s-auto"></div><div class="sub">same answer on every reading</div></div>
+  <div class="stat review"><div class="k">Waiting for you</div><div class="v" id="s-rev"></div><div class="sub">the answer depends on a fact or a judgment</div></div>
+  <div class="stat money"><div class="k">Disallowed, FY 2025-26</div><div class="v" id="s-amt"></div><div class="sub" id="s-amt-sub"></div></div>
+</section>
+<p class="notice wrap"><b>Sample data.</b> 18 made-up vendors of a fictional buyer. Facts shown are the hand-labelled readings, cross-checked by the regex reader and the NIC-code rule, standing in for the LLM reader. Answers you give here stay in this browser.</p>
+
+<main class="wrap desk">
+  <nav class="queue" aria-label="Invoices">
+    <div class="tabs" role="tablist">
+      <button role="tab" id="t-review" aria-selected="true" data-f="review">To review</button>
+      <button role="tab" id="t-auto" aria-selected="false" data-f="auto">Automatic</button>
+      <button role="tab" id="t-all" aria-selected="false" data-f="all">All</button>
+    </div>
+    <ul class="qlist" id="qlist"></ul>
+  </nav>
+  <article class="detail" id="detail" aria-live="polite"></article>
+</main>
+<section class="wrap watch" id="watch"></section>
+
+<script>
+const DATA = /*__DATA__*/null;
+const fmt = new Intl.NumberFormat("en-IN");
+const rs = x => x == null ? "–" : "₹" + fmt.format(x);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const FACT_NAMES = {category: "Enterprise type", activity: "Activity", registration_date: "Udyam registered",
+  payment_term: "Payment term", objections: "Objections to goods"};
+const ORIGIN = {reader: "reader", "reader:alt": "reader, alternate", regex: "regex reader", "nic-rule": "NIC-code rule"};
+const DOCNAME = {udyam: "Udyam certificate", po: "Purchase order", invoice: "Supplier invoice", notes: "QC / email notes", ledger: "Ledger"};
+
+let resolved = {};
+try { resolved = JSON.parse(localStorage.getItem("desk-resolved") || "{}"); } catch (e) { resolved = {}; }
+const save = () => { try { localStorage.setItem("desk-resolved", JSON.stringify(resolved)); } catch (e) {} };
+
+const rows = [];
+DATA.cases.forEach(c => c.decisions.forEach(d => rows.push({c, d, key: c.case + "|" + d.invoice})));
+let filter = "review", current = null, docTab = null;
+
+function status(r) { return r.d.decision === "AUTO" ? "AUTO" : (resolved[r.key] ? "DONE" : "REVIEW"); }
+function amount(r) { const s = status(r); return s === "AUTO" ? r.d.disallowed : s === "DONE" ? resolved[r.key].amount : null; }
+
+function fmtVal(fact, v) {
+  if (fact === "payment_term") {
+    if (!v || v.days == null) return "No written payment term (15-day default applies)";
+    const where = {buyer_po: "in the buyer's PO", contract: "in the contract", supplier_invoice_only: "only on the supplier's invoice"}[v.instrument] || "";
+    const from = {acceptance: "acceptance", delivery: "delivery", invoice: "invoice date", month_end: "end of invoice month", other: "an undated event"}[v.basis] || v.basis;
+    return `${v.days} days from ${from}, ${where}`;
+  }
+  if (fact === "objections") return (!v || !v.length) ? "None in writing" : v.map(o => `Raised ${o.raised}, removed ${o.removed || "not yet"}`).join("; ");
+  if (fact === "registration_date") return v || "Not registered";
+  if (fact === "_policy") return v ? "Counts as a written agreement" : "Does not count as a written agreement";
+  return v ? String(v)[0].toUpperCase() + String(v).slice(1) : "None";
+}
+
+function summary() {
+  const n = rows.length, auto = rows.filter(r => status(r) === "AUTO").length, rev = rows.filter(r => status(r) === "REVIEW").length;
+  const total = rows.reduce((a, r) => a + (amount(r) || 0), 0);
+  document.getElementById("s-n").textContent = n;
+  document.getElementById("s-v").textContent = DATA.cases.length + " vendors";
+  document.getElementById("s-auto").textContent = auto;
+  document.getElementById("s-rev").textContent = rev;
+  document.getElementById("s-amt").textContent = rs(total);
+  document.getElementById("s-amt-sub").textContent = rev ? `so far; ${rev} invoice${rev > 1 ? "s" : ""} still open` : "all invoices settled";
+  document.getElementById("t-review").textContent = `To review (${rev})`;
+  document.getElementById("t-auto").textContent = `Automatic (${auto})`;
+  document.getElementById("t-all").textContent = `All (${n})`;
+}
+
+function queue() {
+  const list = rows.filter(r => filter === "all" || (filter === "auto" ? status(r) === "AUTO" : status(r) !== "AUTO"));
+  const ul = document.getElementById("qlist");
+  ul.innerHTML = list.map(r => {
+    const s = status(r), a = amount(r);
+    const shown = a == null ? (r.d.range[0] === r.d.range[1] ? "≤ " + rs(r.d.range[1]) : `${rs(r.d.range[0])}–${fmt.format(r.d.range[1])}`) : rs(a);
+    return `<li class="qitem" tabindex="0" data-k="${esc(r.key)}" aria-current="${current === r.key}">
+      <span class="who">${esc(r.c.supplier)}</span><span class="amt">${shown}</span>
+      <span class="inv">${esc(r.c.case)} · ${esc(r.d.invoice)}</span><span><span class="pill ${s}">${s === "DONE" ? "Decided" : s === "AUTO" ? "Auto" : "Review"}</span></span></li>`;
+  }).join("") || `<li class="qitem"><span class="who">Nothing here.</span></li>`;
+  ul.querySelectorAll(".qitem[data-k]").forEach(li => {
+    const go = () => { current = li.dataset.k; docTab = null; render(); };
+    li.addEventListener("click", go);
+    li.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+  });
+}
+
+function quotesFor(c) {
+  const q = [];
+  Object.values(c.evidence).forEach(list => list.forEach(e => {
+    if (e.quote) q.push(e.quote);
+    if (Array.isArray(e.value)) e.value.forEach(o => { if (o.raised_quote) q.push(o.raised_quote); if (o.removed_quote) q.push(o.removed_quote); });
+  }));
+  Object.values(c.tripwire || {}).forEach(t => q.push(t));
+  return q.filter(Boolean);
+}
+
+function highlight(text, quotes) {
+  let html = esc(text);
+  [...new Set(quotes)].sort((a, b) => b.length - a.length).forEach(q => {
+    const e = esc(q);
+    if (e.length > 3 && html.includes(e)) html = html.split(e).join(`<mark>${e}</mark>`);
+  });
+  return html;
+}
+
+function render() {
+  summary(); queue();
+  const r = rows.find(x => x.key === current);
+  const el = document.getElementById("detail");
+  if (!r) { el.innerHTML = `<p class="tests">Pick an invoice from the list.</p>`; return; }
+  const {c, d} = r, s = status(r);
+  const pr = d.primary;
+  let answer;
+  if (s === "AUTO") answer = `<span class="big">${rs(d.disallowed)}</span><span class="lbl">disallowed for FY 2025-26 · settled automatically</span>`;
+  else if (s === "DONE") answer = `<span class="big">${rs(resolved[r.key].amount)}</span><span class="lbl">disallowed · decided by you</span>`;
+  else answer = d.range[0] === d.range[1]
+      ? `<span class="big">≤ ${rs(d.range[1])}</span><span class="lbl">provisional, could be lower · needs your answer</span>`
+      : `<span class="big">${rs(d.range[0])} – ${rs(d.range[1])}</span><span class="lbl">depends on your answer below</span>`;
+
+  let ask = "";
+  if (s === "REVIEW") {
+    ask = d.questions.map((q, qi) => `<div class="ask"><p>${esc(q.question)}</p>
+      ${q.answers.length ? `<div class="opts">${q.answers.map((a, ai) => `<button class="opt" data-q="${qi}" data-a="${ai}"><span>If: ${esc(a.reading)}</span><span class="r">${rs(a.disallowed)}</span></button>`).join("")}</div>`
+        : `<div class="opts"><button class="opt" data-q="${qi}" data-a="keep"><span>Checked the notes: no objection within 15 days</span><span class="r">${rs(d.range[1])}</span></button></div>`}
+      ${q.fact === "_policy" ? `<label class="policy"><input type="checkbox" id="pol-${esc(r.key)}" checked> Save my answer as firm policy for every vendor</label>` : ""}</div>`).join("");
+  } else if (s === "DONE") {
+    ask = `<div class="resolved"><span>You chose: <b>${esc(resolved[r.key].label)}</b>${resolved[r.key].policy ? " · saved as firm policy" : ""}</span><button class="linkbtn" id="undo">Undo</button></div>`;
+  }
+
+  const trail = pr.trail.map(([id, why]) => {
+    const rule = DATA.rules[id] || {};
+    return `<li><span class="rid">${esc(id)}</span><span>${esc(why)}<span class="cite">${esc(rule.cite || "")}</span></span></li>`;
+  }).join("");
+
+  const facts = Object.entries(c.evidence).map(([name, list]) => {
+    const cands = list.map(e => {
+      const fails = e.fails || [];
+      let quotes = e.quote ? `<div class="quote">${esc(e.quote)}</div>` : "";
+      if (Array.isArray(e.value) && e.value.length) quotes = e.value.map(o => `<div class="quote">${esc(o.raised_quote)}</div>${o.removed_quote ? `<div class="quote">${esc(o.removed_quote)}</div>` : ""}`).join("");
+      return `<div class="cand"><div><span class="val">${esc(fmtVal(name, e.value))}</span><span class="origin">${esc(ORIGIN[e.origin] || e.origin)}</span></div>${quotes}
+        <div class="${fails.length ? "fail" : "ok"}">${fails.length ? "Guard failed: " + esc(fails.join("; ")) : "Quote found in " + esc(DOCNAME[e.source] || e.source) + ", checks passed"}</div></div>`;
+    }).join("");
+    return `<div class="fact"><div class="name">${esc(FACT_NAMES[name] || name)}</div><div>${cands || '<span class="fail">No reading</span>'}</div></div>`;
+  }).join("");
+
+  const docNames = Object.keys(c.docs).concat(["ledger"]);
+  docTab = docTab && docNames.includes(docTab) ? docTab : docNames[0];
+  let docBody;
+  if (docTab === "ledger") {
+    const L = c.ledger;
+    docBody = `<div class="tablewrap"><table class="ledger"><thead><tr><th>Invoice</th><th>Delivered (GRN)</th><th>Invoice date</th><th>Amount</th><th>Payments</th></tr></thead><tbody>${
+      L.invoices.map(i => `<tr><td>${esc(i.no)}</td><td>${esc(i.delivery)}</td><td>${esc(i.invoice_date)}</td><td class="amt">${rs(i.amount)}</td><td>${
+        L.payments.filter(p => p.invoice === i.no).map(p => `${esc(p.date)}: ${rs(p.amount)}`).join("<br>") || "Unpaid at 30 Sep 2026"}</td></tr>`).join("")
+    }</tbody></table></div><p class="tests">Order date ${esc(L.po_date)}${L.capital ? " · booked to Plant &amp; Machinery (capital)" : ""}</p>`;
+  } else {
+    docBody = `<pre class="doc">${highlight(c.docs[docTab], quotesFor(c))}</pre>`;
+  }
+
+  el.innerHTML = `
+    <div><div class="eyebrow">${esc(c.case)} · invoice ${esc(d.invoice)} · ${rs(r.c.ledger.invoices.find(i => i.no === d.invoice).amount)}</div>
+      <h2>${esc(c.supplier)}</h2><div class="tests">Test case: ${esc(c.tests)}</div></div>
+    <div class="answer">${answer}</div>
+    ${ask}
+    <section><h3>Why: rule trail for the main reading</h3><ul class="trail">${trail}</ul>
+      <p class="tests">Acceptance ${esc(pr.acceptance)} · due ${esc(pr.due)}${pr.late ? " · paid late (MSMED s.16 interest exposure)" : ""}</p></section>
+    <section><h3>Evidence: every reading the engine was run on</h3><div class="facts">${facts}</div></section>
+    <section class="docs"><h3>Source documents</h3><div class="doctabs" role="tablist">${
+      docNames.map(n => `<button role="tab" data-doc="${n}" aria-selected="${n === docTab}">${esc(DOCNAME[n] || n)}</button>`).join("")}</div>${docBody}</section>`;
+
+  el.querySelectorAll("[data-doc]").forEach(b => b.addEventListener("click", () => { docTab = b.dataset.doc; render(); }));
+  el.querySelectorAll(".opt").forEach(b => b.addEventListener("click", () => {
+    const q = d.questions[+b.dataset.q];
+    const a = b.dataset.a === "keep" ? {reading: "No objection within 15 days", disallowed: d.range[1]} : q.answers[+b.dataset.a];
+    const pol = el.querySelector(`#pol-${CSS.escape(r.key)}`);
+    resolved[r.key] = {label: a.reading, amount: a.disallowed, policy: !!(pol && pol.checked)};
+    save(); render();
+  }));
+  const u = el.querySelector("#undo");
+  if (u) u.addEventListener("click", () => { delete resolved[r.key]; save(); render(); });
+}
+
+document.querySelectorAll(".tabs button").forEach(b => b.addEventListener("click", () => {
+  filter = b.dataset.f;
+  document.querySelectorAll(".tabs button").forEach(x => x.setAttribute("aria-selected", x === b));
+  queue();
+}));
+
+const P = DATA.pack;
+document.getElementById("meta").textContent =
+  `Kestrel Forgings Pvt Ltd (fictional) · FY 2025-26 · payments up to 30 Sep 2026 · rule pack ${P.version}, verified ${P.verified_on}, review by ${P.review_by}`;
+document.getElementById("watch").innerHTML = "<h3>Rule pack watch-list</h3>" +
+  DATA.watch.map(w => `<div><b>${esc(w.item)}.</b> ${esc(w.status)}</div>`).join("");
+current = (rows.find(r => status(r) === "REVIEW") || rows[0]).key;
+render();
+</script>

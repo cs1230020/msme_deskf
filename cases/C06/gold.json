@@ -1,0 +1,51 @@
+{
+  "case": "C06",
+  "tests": "Written objection within 15 days moves the day of acceptance to the day it is removed.",
+  "facts": {
+    "category": {
+      "value": "micro",
+      "source": "udyam",
+      "quote": "1 | 2025-26 | Micro | 30/04/2025"
+    },
+    "activity": {
+      "value": "manufacturing",
+      "source": "udyam",
+      "quote": "MAJOR ACTIVITY : Manufacturing"
+    },
+    "registration_date": {
+      "value": "2021-01-04",
+      "source": "udyam",
+      "quote": "DATE OF UDYAM REGISTRATION : 04/01/2021"
+    },
+    "payment_term": {
+      "value": {
+        "days": 30,
+        "basis": "acceptance",
+        "instrument": "buyer_po"
+      },
+      "source": "po",
+      "quote": "Payment within 30 days of acceptance of material by our QC."
+    },
+    "objections": {
+      "value": [
+        {
+          "invoice": "KR/2231",
+          "raised": "2026-03-12",
+          "raised_quote": "Thu, 12 Mar 2026 - KF QC to Kaveri Refractories: 40 bricks from the lot billed on invoice KR/2231 are rejected for dimensional deviation. Please replace.",
+          "removed": "2026-03-28",
+          "removed_quote": "Replacement bricks received; QC cleared the lot on 28th March. Objection on KR/2231 closed.",
+          "in_writing": true
+        }
+      ],
+      "source": "notes",
+      "quote": ""
+    }
+  },
+  "expected": {
+    "KR/2231": {
+      "decision": "AUTO",
+      "disallowed": 0
+    }
+  },
+  "distractors": {}
+}

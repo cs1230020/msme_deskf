@@ -1,0 +1,52 @@
+{
+  "case": "C13",
+  "tests": "Still unpaid at audit date (rate dispute, no written objection to the goods) - full disallowance.",
+  "facts": {
+    "category": {
+      "value": "micro",
+      "source": "udyam",
+      "quote": "1 | 2025-26 | Micro | 16/04/2025"
+    },
+    "activity": {
+      "value": "services",
+      "source": "udyam",
+      "quote": "MAJOR ACTIVITY : Services"
+    },
+    "registration_date": {
+      "value": "2021-10-06",
+      "source": "udyam",
+      "quote": "DATE OF UDYAM REGISTRATION : 06/10/2021"
+    },
+    "payment_term": {
+      "value": {
+        "days": 30,
+        "basis": "delivery",
+        "instrument": "buyer_po"
+      },
+      "source": "po",
+      "quote": "Payment within 30 days of receipt of processed material."
+    },
+    "objections": {
+      "value": [],
+      "source": "notes",
+      "quote": ""
+    }
+  },
+  "expected": {
+    "PHT/1544": {
+      "decision": "AUTO",
+      "disallowed": 240000
+    }
+  },
+  "distractors": {
+    "payment_term": {
+      "value": {
+        "days": 10,
+        "basis": "delivery",
+        "instrument": "buyer_po"
+      },
+      "source": "po",
+      "quote": "Processing to be completed within 10 days of receipt of forgings."
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "case": "C11",
+  "tests": "Paid late but within the same financial year - no tax disallowance (still late for MSMED interest).",
+  "facts": {
+    "category": {
+      "value": "micro",
+      "source": "udyam",
+      "quote": "1 | 2025-26 | Micro | 02/05/2025"
+    },
+    "activity": {
+      "value": "manufacturing",
+      "source": "udyam",
+      "quote": "MAJOR ACTIVITY : Manufacturing"
+    },
+    "registration_date": {
+      "value": "2020-11-30",
+      "source": "udyam",
+      "quote": "DATE OF UDYAM REGISTRATION : 30/11/2020"
+    },
+    "payment_term": {
+      "value": {
+        "days": 30,
+        "basis": "delivery",
+        "instrument": "buyer_po"
+      },
+      "source": "po",
+      "quote": "Credit period: 30 days from delivery."
+    },
+    "objections": {
+      "value": [],
+      "source": "notes",
+      "quote": ""
+    }
+  },
+  "expected": {
+    "DIG/7710": {
+      "decision": "AUTO",
+      "disallowed": 0
+    }
+  },
+  "distractors": {
+    "payment_term": {
+      "value": {
+        "days": 60,
+        "basis": "delivery",
+        "instrument": "buyer_po"
+      },
+      "source": "po",
+      "quote": "Cylinders to be returned within 60 days."
+    }
+  }
+}

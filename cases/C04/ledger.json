@@ -1,0 +1,22 @@
+{
+  "case": "C04",
+  "supplier": "Balaji Steel Traders",
+  "fy": "2025-26",
+  "po_date": "2026-01-10",
+  "capital": false,
+  "invoices": [
+    {
+      "no": "BST/2290",
+      "delivery": "2026-01-20",
+      "invoice_date": "2026-01-20",
+      "amount": 650000
+    }
+  ],
+  "payments": [
+    {
+      "invoice": "BST/2290",
+      "date": "2026-05-10",
+      "amount": 650000
+    }
+  ]
+}

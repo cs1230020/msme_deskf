@@ -1,0 +1,42 @@
+{
+  "case": "C14",
+  "tests": "'Net 45 EOM' runs past the statutory cap; cap governs.",
+  "facts": {
+    "category": {
+      "value": "small",
+      "source": "udyam",
+      "quote": "1 | 2025-26 | Small | 03/05/2025"
+    },
+    "activity": {
+      "value": "manufacturing",
+      "source": "udyam",
+      "quote": "MAJOR ACTIVITY : Manufacturing"
+    },
+    "registration_date": {
+      "value": "2019-08-19",
+      "source": "udyam",
+      "quote": "DATE OF UDYAM REGISTRATION : 19/08/2019"
+    },
+    "payment_term": {
+      "value": {
+        "days": 45,
+        "basis": "month_end",
+        "instrument": "buyer_po"
+      },
+      "source": "po",
+      "quote": "Payment terms: Net 45 EOM."
+    },
+    "objections": {
+      "value": [],
+      "source": "notes",
+      "quote": ""
+    }
+  },
+  "expected": {
+    "SRR/0318": {
+      "decision": "AUTO",
+      "disallowed": 1400000
+    }
+  },
+  "distractors": {}
+}

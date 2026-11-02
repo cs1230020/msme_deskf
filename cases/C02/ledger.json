@@ -1,0 +1,22 @@
+{
+  "case": "C02",
+  "supplier": "Rathore Alloy Castings",
+  "fy": "2025-26",
+  "po_date": "2026-02-05",
+  "capital": false,
+  "invoices": [
+    {
+      "no": "RAC/1187",
+      "delivery": "2026-02-20",
+      "invoice_date": "2026-02-20",
+      "amount": 980000
+    }
+  ],
+  "payments": [
+    {
+      "invoice": "RAC/1187",
+      "date": "2026-04-15",
+      "amount": 980000
+    }
+  ]
+}

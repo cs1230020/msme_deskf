@@ -1,0 +1,22 @@
+{
+  "case": "C14",
+  "supplier": "Shakti Rolls & Rings",
+  "fy": "2025-26",
+  "po_date": "2026-02-28",
+  "capital": false,
+  "invoices": [
+    {
+      "no": "SRR/0318",
+      "delivery": "2026-03-10",
+      "invoice_date": "2026-03-10",
+      "amount": 1400000
+    }
+  ],
+  "payments": [
+    {
+      "invoice": "SRR/0318",
+      "date": "2026-04-30",
+      "amount": 1400000
+    }
+  ]
+}

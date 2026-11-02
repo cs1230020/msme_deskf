@@ -1,0 +1,22 @@
+{
+  "case": "C10",
+  "supplier": "Navkar Fasteners",
+  "fy": "2025-26",
+  "po_date": "2026-02-10",
+  "capital": false,
+  "invoices": [
+    {
+      "no": "NF/0571",
+      "delivery": "2026-03-02",
+      "invoice_date": "2026-03-02",
+      "amount": 120000
+    }
+  ],
+  "payments": [
+    {
+      "invoice": "NF/0571",
+      "date": "2026-05-05",
+      "amount": 120000
+    }
+  ]
+}

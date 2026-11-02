@@ -1,0 +1,52 @@
+{
+  "case": "C18",
+  "tests": "Two invoices; one paid within the year; the other part-paid on time and part late (only the late part is disallowed).",
+  "facts": {
+    "category": {
+      "value": "small",
+      "source": "udyam",
+      "quote": "2 | 2025-26 | Small | 06/05/2025"
+    },
+    "activity": {
+      "value": "manufacturing",
+      "source": "udyam",
+      "quote": "MAJOR ACTIVITY : Manufacturing"
+    },
+    "registration_date": {
+      "value": "2020-10-20",
+      "source": "udyam",
+      "quote": "DATE OF UDYAM REGISTRATION : 20/10/2020"
+    },
+    "payment_term": {
+      "value": {
+        "days": 60,
+        "basis": "acceptance",
+        "instrument": "buyer_po"
+      },
+      "source": "po",
+      "quote": "Payment within 60 days."
+    },
+    "objections": {
+      "value": [],
+      "source": "notes",
+      "quote": ""
+    }
+  },
+  "expected": {
+    "SVB/1102": {
+      "decision": "AUTO",
+      "disallowed": 0
+    },
+    "SVB/1167": {
+      "decision": "AUTO",
+      "disallowed": 420000
+    }
+  },
+  "distractors": {
+    "category": {
+      "value": "micro",
+      "source": "udyam",
+      "quote": "1 | 2024-25 | Micro | 04/05/2024"
+    }
+  }
+}

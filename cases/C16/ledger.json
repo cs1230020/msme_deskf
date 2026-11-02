@@ -1,0 +1,22 @@
+{
+  "case": "C16",
+  "supplier": "Krishna Pattern Shop",
+  "fy": "2025-26",
+  "po_date": "2026-02-15",
+  "capital": false,
+  "invoices": [
+    {
+      "no": "KPS/207",
+      "delivery": "2026-03-01",
+      "invoice_date": "2026-03-01",
+      "amount": 560000
+    }
+  ],
+  "payments": [
+    {
+      "invoice": "KPS/207",
+      "date": "2026-04-20",
+      "amount": 560000
+    }
+  ]
+}

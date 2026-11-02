@@ -1,0 +1,48 @@
+{
+  "case": "C04",
+  "tests": "Trader registered on Udyam (activity shown as 'Services'; NIC code is wholesale trade) - outside s.15.",
+  "facts": {
+    "category": {
+      "value": "micro",
+      "source": "udyam",
+      "quote": "2 | 2025-26 | Micro | 06/05/2025"
+    },
+    "activity": {
+      "value": "trading",
+      "source": "udyam",
+      "quote": "1 | 46620 - Wholesale of metals and metal ores"
+    },
+    "registration_date": {
+      "value": "2021-09-11",
+      "source": "udyam",
+      "quote": "DATE OF UDYAM REGISTRATION : 11/09/2021"
+    },
+    "payment_term": {
+      "value": {
+        "days": 30,
+        "basis": "delivery",
+        "instrument": "buyer_po"
+      },
+      "source": "po",
+      "quote": "Payment within 30 days of delivery."
+    },
+    "objections": {
+      "value": [],
+      "source": "notes",
+      "quote": ""
+    }
+  },
+  "expected": {
+    "BST/2290": {
+      "decision": "AUTO",
+      "disallowed": 0
+    }
+  },
+  "distractors": {
+    "activity": {
+      "value": "services",
+      "source": "udyam",
+      "quote": "MAJOR ACTIVITY : Services"
+    }
+  }
+}

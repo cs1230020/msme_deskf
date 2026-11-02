@@ -1,0 +1,22 @@
+{
+  "case": "C06",
+  "supplier": "Kaveri Refractories",
+  "fy": "2025-26",
+  "po_date": "2026-02-24",
+  "capital": false,
+  "invoices": [
+    {
+      "no": "KR/2231",
+      "delivery": "2026-03-05",
+      "invoice_date": "2026-03-05",
+      "amount": 210000
+    }
+  ],
+  "payments": [
+    {
+      "invoice": "KR/2231",
+      "date": "2026-04-20",
+      "amount": 210000
+    }
+  ]
+}

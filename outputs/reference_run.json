@@ -1,0 +1,2434 @@
+{
+ "C01": {
+  "decisions": [
+   {
+    "invoice": "SGP/311",
+    "decision": "AUTO",
+    "disallowed": 0,
+    "range": [
+     0,
+     0
+    ],
+    "primary": {
+     "disallowed": 0,
+     "acceptance": "2026-03-10",
+     "due": "2026-04-09",
+     "applicable": true,
+     "late": false,
+     "trail": [
+      [
+       "APP-01",
+       "supplier is 'micro', manufacturing, registered 2021-05-10"
+      ],
+      [
+       "ACC-01",
+       "delivered 2026-03-10"
+      ],
+      [
+       "DUE-02",
+       "agreed 30 days from delivery = 2026-04-09; cap 2026-04-24; due 2026-04-09"
+      ],
+      [
+       "TAX-1961",
+       "Rs 4,20,000 unpaid at 2026-03-31; Rs 4,20,000 paid by due 2026-04-09; Rs 0 disallowed for FY 2025-26, allowed in year of payment"
+      ]
+     ],
+     "flags": []
+    },
+    "pivotal": [],
+    "scenarios": 2
+   }
+  ],
+  "evidence": {
+   "category": [
+    {
+     "value": "micro",
+     "source": "udyam",
+     "quote": "2 | 2025-26 | Micro | 08/05/2025",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "activity": [
+    {
+     "value": "manufacturing",
+     "source": "udyam",
+     "quote": "MAJOR ACTIVITY : Manufacturing",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "registration_date": [
+    {
+     "value": "2021-05-10",
+     "source": "udyam",
+     "quote": "DATE OF UDYAM REGISTRATION : 10/05/2021",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "payment_term": [
+    {
+     "value": {
+      "days": 30,
+      "basis": "delivery",
+      "instrument": "buyer_po"
+     },
+     "source": "po",
+     "quote": "Payment shall be made within 30 days from the date of receipt of material at our works.",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "objections": [
+    {
+     "value": [],
+     "source": "notes",
+     "quote": "",
+     "origin": "reference",
+     "fails": []
+    }
+   ]
+  },
+  "guards_tripped": [],
+  "options": {
+   "category": [
+    "micro"
+   ],
+   "activity": [
+    "manufacturing"
+   ],
+   "registration_date": [
+    "2021-05-10"
+   ],
+   "payment_term": [
+    {
+     "days": 30,
+     "basis": "delivery",
+     "instrument": "buyer_po"
+    }
+   ],
+   "objections": [
+    []
+   ]
+  },
+  "policy_options": [
+   false,
+   true
+  ],
+  "tripwire": {},
+  "case": "C01",
+  "supplier": "Shree Ganesh Patterns",
+  "origin": "reference"
+ },
+ "C02": {
+  "decisions": [
+   {
+    "invoice": "RAC/1187",
+    "decision": "AUTO",
+    "disallowed": 980000,
+    "range": [
+     980000,
+     980000
+    ],
+    "primary": {
+     "disallowed": 980000,
+     "acceptance": "2026-02-20",
+     "due": "2026-04-06",
+     "applicable": true,
+     "late": true,
+     "trail": [
+      [
+       "APP-01",
+       "supplier is 'small', manufacturing, registered 2020-08-02"
+      ],
+      [
+       "ACC-01",
+       "delivered 2026-02-20"
+      ],
+      [
+       "DUE-02",
+       "agreed 60 days from invoice = 2026-04-21; cap 2026-04-06; due 2026-04-06"
+      ],
+      [
+       "TAX-1961",
+       "Rs 9,80,000 unpaid at 2026-03-31; Rs 0 paid by due 2026-04-06; Rs 9,80,000 disallowed for FY 2025-26, allowed in year of payment"
+      ]
+     ],
+     "flags": []
+    },
+    "pivotal": [],
+    "scenarios": 2
+   }
+  ],
+  "evidence": {
+   "category": [
+    {
+     "value": "small",
+     "source": "udyam",
+     "quote": "1 | 2025-26 | Small | 14/04/2025",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "activity": [
+    {
+     "value": "manufacturing",
+     "source": "udyam",
+     "quote": "MAJOR ACTIVITY : Manufacturing",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "registration_date": [
+    {
+     "value": "2020-08-02",
+     "source": "udyam",
+     "quote": "DATE OF UDYAM REGISTRATION : 02/08/2020",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "payment_term": [
+    {
+     "value": {
+      "days": 60,
+      "basis": "invoice",
+      "instrument": "buyer_po"
+     },
+     "source": "po",
+     "quote": "Payment: Net 60 days from date of invoice.",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "objections": [
+    {
+     "value": [],
+     "source": "notes",
+     "quote": "",
+     "origin": "reference",
+     "fails": []
+    }
+   ]
+  },
+  "guards_tripped": [],
+  "options": {
+   "category": [
+    "small"
+   ],
+   "activity": [
+    "manufacturing"
+   ],
+   "registration_date": [
+    "2020-08-02"
+   ],
+   "payment_term": [
+    {
+     "days": 60,
+     "basis": "invoice",
+     "instrument": "buyer_po"
+    }
+   ],
+   "objections": [
+    []
+   ]
+  },
+  "policy_options": [
+   false,
+   true
+  ],
+  "tripwire": {},
+  "case": "C02",
+  "supplier": "Rathore Alloy Castings",
+  "origin": "reference"
+ },
+ "C03": {
+  "decisions": [
+   {
+    "invoice": "JPM/045",
+    "decision": "REVIEW",
+    "disallowed": null,
+    "range": [
+     0,
+     175000
+    ],
+    "primary": {
+     "disallowed": 175000,
+     "acceptance": "2026-03-25",
+     "due": "2026-04-09",
+     "applicable": true,
+     "late": true,
+     "trail": [
+      [
+       "APP-01",
+       "supplier is 'micro', services, registered 2022-06-18"
+      ],
+      [
+       "ACC-01",
+       "delivered 2026-03-25"
+      ],
+      [
+       "DUE-01",
+       "no written agreement: due 2026-04-09"
+      ],
+      [
+       "TAX-1961",
+       "Rs 1,75,000 unpaid at 2026-03-31; Rs 0 paid by due 2026-04-09; Rs 1,75,000 disallowed for FY 2025-26, allowed in year of payment"
+      ]
+     ],
+     "flags": []
+    },
+    "pivotal": [
+     {
+      "fact": "payment_term",
+      "readings": [
+       {
+        "value": {
+         "days": null,
+         "basis": null,
+         "instrument": "none"
+        },
+        "disallowed": 175000
+       },
+       {
+        "value": {
+         "days": 30,
+         "basis": "delivery",
+         "instrument": "buyer_po"
+        },
+        "disallowed": 0
+       }
+      ]
+     }
+    ],
+    "scenarios": 4
+   }
+  ],
+  "evidence": {
+   "category": [
+    {
+     "value": "micro",
+     "source": "udyam",
+     "quote": "1 | 2025-26 | Micro | 21/04/2025",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "activity": [
+    {
+     "value": "services",
+     "source": "udyam",
+     "quote": "MAJOR ACTIVITY : Services",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "registration_date": [
+    {
+     "value": "2022-06-18",
+     "source": "udyam",
+     "quote": "DATE OF UDYAM REGISTRATION : 18/06/2022",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "payment_term": [
+    {
+     "value": {
+      "days": null,
+      "basis": null,
+      "instrument": "none"
+     },
+     "source": "po",
+     "quote": "Payment and delivery: material to be delivered within 30 days of this order; payment as per our usual practice.",
+     "origin": "reference",
+     "fails": []
+    },
+    {
+     "value": {
+      "days": 30,
+      "basis": "delivery",
+      "instrument": "buyer_po"
+     },
+     "source": "po",
+     "quote": "Payment and delivery: material to be delivered within 30 days of this order; payment as per our usual practice.",
+     "origin": "regex",
+     "fails": []
+    }
+   ],
+   "objections": [
+    {
+     "value": [],
+     "source": "notes",
+     "quote": "",
+     "origin": "reference",
+     "fails": []
+    }
+   ]
+  },
+  "guards_tripped": [],
+  "options": {
+   "category": [
+    "micro"
+   ],
+   "activity": [
+    "services"
+   ],
+   "registration_date": [
+    "2022-06-18"
+   ],
+   "payment_term": [
+    {
+     "days": null,
+     "basis": null,
+     "instrument": "none"
+    },
+    {
+     "days": 30,
+     "basis": "delivery",
+     "instrument": "buyer_po"
+    }
+   ],
+   "objections": [
+    []
+   ]
+  },
+  "policy_options": [
+   false,
+   true
+  ],
+  "tripwire": {},
+  "case": "C03",
+  "supplier": "Jyoti Precision Machining",
+  "origin": "reference"
+ },
+ "C04": {
+  "decisions": [
+   {
+    "invoice": "BST/2290",
+    "decision": "AUTO",
+    "disallowed": 0,
+    "range": [
+     0,
+     0
+    ],
+    "primary": {
+     "disallowed": 0,
+     "acceptance": "2026-01-20",
+     "due": "2026-02-19",
+     "applicable": false,
+     "late": true,
+     "trail": [
+      [
+       "APP-02",
+       "supplier is a trader: outside s.15"
+      ],
+      [
+       "ACC-01",
+       "delivered 2026-01-20"
+      ],
+      [
+       "DUE-02",
+       "agreed 30 days from delivery = 2026-02-19; cap 2026-03-06; due 2026-02-19"
+      ]
+     ],
+     "flags": []
+    },
+    "pivotal": [],
+    "scenarios": 2
+   }
+  ],
+  "evidence": {
+   "category": [
+    {
+     "value": "micro",
+     "source": "udyam",
+     "quote": "2 | 2025-26 | Micro | 06/05/2025",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "activity": [
+    {
+     "value": "trading",
+     "source": "udyam",
+     "quote": "1 | 46620 - Wholesale of metals and metal ores",
+     "origin": "nic-rule",
+     "fails": []
+    }
+   ],
+   "registration_date": [
+    {
+     "value": "2021-09-11",
+     "source": "udyam",
+     "quote": "DATE OF UDYAM REGISTRATION : 11/09/2021",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "payment_term": [
+    {
+     "value": {
+      "days": 30,
+      "basis": "delivery",
+      "instrument": "buyer_po"
+     },
+     "source": "po",
+     "quote": "Payment within 30 days of delivery.",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "objections": [
+    {
+     "value": [],
+     "source": "notes",
+     "quote": "",
+     "origin": "reference",
+     "fails": []
+    }
+   ]
+  },
+  "guards_tripped": [],
+  "options": {
+   "category": [
+    "micro"
+   ],
+   "activity": [
+    "trading"
+   ],
+   "registration_date": [
+    "2021-09-11"
+   ],
+   "payment_term": [
+    {
+     "days": 30,
+     "basis": "delivery",
+     "instrument": "buyer_po"
+    }
+   ],
+   "objections": [
+    []
+   ]
+  },
+  "policy_options": [
+   false,
+   true
+  ],
+  "tripwire": {},
+  "case": "C04",
+  "supplier": "Balaji Steel Traders",
+  "origin": "reference"
+ },
+ "C05": {
+  "decisions": [
+   {
+    "invoice": "MFC/7731",
+    "decision": "AUTO",
+    "disallowed": 0,
+    "range": [
+     0,
+     0
+    ],
+    "primary": {
+     "disallowed": 0,
+     "acceptance": "2026-03-05",
+     "due": "2026-04-19",
+     "applicable": false,
+     "late": true,
+     "trail": [
+      [
+       "APP-01",
+       "supplier is 'medium' for FY 2025-26: not a micro/small 'supplier'"
+      ],
+      [
+       "ACC-01",
+       "delivered 2026-03-05"
+      ],
+      [
+       "DUE-02",
+       "agreed 45 days from acceptance = 2026-04-19; cap 2026-04-19; due 2026-04-19"
+      ]
+     ],
+     "flags": []
+    },
+    "pivotal": [],
+    "scenarios": 2
+   }
+  ],
+  "evidence": {
+   "category": [
+    {
+     "value": "medium",
+     "source": "udyam",
+     "quote": "3 | 2025-26 | Medium | 07/05/2025",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "activity": [
+    {
+     "value": "manufacturing",
+     "source": "udyam",
+     "quote": "MAJOR ACTIVITY : Manufacturing",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "registration_date": [
+    {
+     "value": "2020-07-15",
+     "source": "udyam",
+     "quote": "DATE OF UDYAM REGISTRATION : 15/07/2020",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "payment_term": [
+    {
+     "value": {
+      "days": 45,
+      "basis": "acceptance",
+      "instrument": "buyer_po"
+     },
+     "source": "po",
+     "quote": "Payment within 45 days from acceptance of material.",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "objections": [
+    {
+     "value": [],
+     "source": "notes",
+     "quote": "",
+     "origin": "reference",
+     "fails": []
+    }
+   ]
+  },
+  "guards_tripped": [],
+  "options": {
+   "category": [
+    "medium"
+   ],
+   "activity": [
+    "manufacturing"
+   ],
+   "registration_date": [
+    "2020-07-15"
+   ],
+   "payment_term": [
+    {
+     "days": 45,
+     "basis": "acceptance",
+     "instrument": "buyer_po"
+    }
+   ],
+   "objections": [
+    []
+   ]
+  },
+  "policy_options": [
+   false,
+   true
+  ],
+  "tripwire": {},
+  "case": "C05",
+  "supplier": "Mehta Forge Components",
+  "origin": "reference"
+ },
+ "C06": {
+  "decisions": [
+   {
+    "invoice": "KR/2231",
+    "decision": "REVIEW",
+    "disallowed": null,
+    "range": [
+     0,
+     210000
+    ],
+    "primary": {
+     "disallowed": 0,
+     "acceptance": "2026-03-28",
+     "due": "2026-04-27",
+     "applicable": true,
+     "late": false,
+     "trail": [
+      [
+       "APP-01",
+       "supplier is 'micro', manufacturing, registered 2021-01-04"
+      ],
+      [
+       "ACC-01",
+       "delivered 2026-03-05"
+      ],
+      [
+       "ACC-02",
+       "written objection 2026-03-12 (within 15 days), removed 2026-03-28"
+      ],
+      [
+       "DUE-02",
+       "agreed 30 days from acceptance = 2026-04-27; cap 2026-05-12; due 2026-04-27"
+      ],
+      [
+       "TAX-1961",
+       "Rs 2,10,000 unpaid at 2026-03-31; Rs 2,10,000 paid by due 2026-04-27; Rs 0 disallowed for FY 2025-26, allowed in year of payment"
+      ]
+     ],
+     "flags": []
+    },
+    "pivotal": [
+     {
+      "fact": "objections",
+      "readings": [
+       {
+        "value": [
+         {
+          "invoice": "KR/2231",
+          "raised": "2026-03-12",
+          "raised_quote": "Thu, 12 Mar 2026 - KF QC to Kaveri Refractories: 40 bricks from the lot billed on invoice KR/2231 are rejected for dimensional deviation. Please replace.",
+          "removed": "2026-03-28",
+          "removed_quote": "Replacement bricks received; QC cleared the lot on 28th March. Objection on KR/2231 closed.",
+          "in_writing": true
+         }
+        ],
+        "disallowed": 0
+       },
+       {
+        "value": [],
+        "disallowed": 210000
+       }
+      ]
+     }
+    ],
+    "scenarios": 4
+   }
+  ],
+  "evidence": {
+   "category": [
+    {
+     "value": "micro",
+     "source": "udyam",
+     "quote": "1 | 2025-26 | Micro | 30/04/2025",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "activity": [
+    {
+     "value": "manufacturing",
+     "source": "udyam",
+     "quote": "MAJOR ACTIVITY : Manufacturing",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "registration_date": [
+    {
+     "value": "2021-01-04",
+     "source": "udyam",
+     "quote": "DATE OF UDYAM REGISTRATION : 04/01/2021",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "payment_term": [
+    {
+     "value": {
+      "days": 30,
+      "basis": "acceptance",
+      "instrument": "buyer_po"
+     },
+     "source": "po",
+     "quote": "Payment within 30 days of acceptance of material by our QC.",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "objections": [
+    {
+     "value": [
+      {
+       "invoice": "KR/2231",
+       "raised": "2026-03-12",
+       "raised_quote": "Thu, 12 Mar 2026 - KF QC to Kaveri Refractories: 40 bricks from the lot billed on invoice KR/2231 are rejected for dimensional deviation. Please replace.",
+       "removed": "2026-03-28",
+       "removed_quote": "Replacement bricks received; QC cleared the lot on 28th March. Objection on KR/2231 closed.",
+       "in_writing": true
+      }
+     ],
+     "source": "notes",
+     "quote": "",
+     "origin": "reference",
+     "fails": []
+    },
+    {
+     "value": [],
+     "source": "notes",
+     "quote": "",
+     "origin": "regex",
+     "fails": []
+    }
+   ]
+  },
+  "guards_tripped": [],
+  "options": {
+   "category": [
+    "micro"
+   ],
+   "activity": [
+    "manufacturing"
+   ],
+   "registration_date": [
+    "2021-01-04"
+   ],
+   "payment_term": [
+    {
+     "days": 30,
+     "basis": "acceptance",
+     "instrument": "buyer_po"
+    }
+   ],
+   "objections": [
+    [
+     {
+      "invoice": "KR/2231",
+      "raised": "2026-03-12",
+      "raised_quote": "Thu, 12 Mar 2026 - KF QC to Kaveri Refractories: 40 bricks from the lot billed on invoice KR/2231 are rejected for dimensional deviation. Please replace.",
+      "removed": "2026-03-28",
+      "removed_quote": "Replacement bricks received; QC cleared the lot on 28th March. Objection on KR/2231 closed.",
+      "in_writing": true
+     }
+    ],
+    []
+   ]
+  },
+  "policy_options": [
+   false,
+   true
+  ],
+  "tripwire": {},
+  "case": "C06",
+  "supplier": "Kaveri Refractories",
+  "origin": "reference"
+ },
+ "C07": {
+  "decisions": [
+   {
+    "invoice": "SH/905",
+    "decision": "AUTO",
+    "disallowed": 360000,
+    "range": [
+     360000,
+     360000
+    ],
+    "primary": {
+     "disallowed": 360000,
+     "acceptance": "2026-02-01",
+     "due": "2026-03-18",
+     "applicable": true,
+     "late": true,
+     "trail": [
+      [
+       "APP-01",
+       "supplier is 'small', manufacturing, registered 2021-03-23"
+      ],
+      [
+       "ACC-01",
+       "delivered 2026-02-01"
+      ],
+      [
+       "ACC-03",
+       "objection 2026-02-21 came 20 days after delivery: ignored"
+      ],
+      [
+       "DUE-02",
+       "agreed 45 days from delivery = 2026-03-18; cap 2026-03-18; due 2026-03-18"
+      ],
+      [
+       "TAX-1961",
+       "Rs 3,60,000 unpaid at 2026-03-31; Rs 0 paid by due 2026-03-18; Rs 3,60,000 disallowed for FY 2025-26, allowed in year of payment"
+      ]
+     ],
+     "flags": []
+    },
+    "pivotal": [],
+    "scenarios": 2
+   }
+  ],
+  "evidence": {
+   "category": [
+    {
+     "value": "small",
+     "source": "udyam",
+     "quote": "1 | 2025-26 | Small | 19/04/2025",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "activity": [
+    {
+     "value": "manufacturing",
+     "source": "udyam",
+     "quote": "MAJOR ACTIVITY : Manufacturing",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "registration_date": [
+    {
+     "value": "2021-03-23",
+     "source": "udyam",
+     "quote": "DATE OF UDYAM REGISTRATION : 23/03/2021",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "payment_term": [
+    {
+     "value": {
+      "days": 45,
+      "basis": "delivery",
+      "instrument": "buyer_po"
+     },
+     "source": "po",
+     "quote": "Payment: 45 days from date of receipt.",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "objections": [
+    {
+     "value": [
+      {
+       "invoice": "SH/905",
+       "raised": "2026-02-21",
+       "raised_quote": "21-02-2026: Complaint emailed to Sai Hydraulics - seal leakage on 3 cylinders from invoice SH/905.",
+       "removed": "2026-03-01",
+       "removed_quote": "01-03-2026: Seals replaced at our plant by Sai Hydraulics; complaint closed.",
+       "in_writing": true
+      }
+     ],
+     "source": "notes",
+     "quote": "",
+     "origin": "reference",
+     "fails": []
+    }
+   ]
+  },
+  "guards_tripped": [],
+  "options": {
+   "category": [
+    "small"
+   ],
+   "activity": [
+    "manufacturing"
+   ],
+   "registration_date": [
+    "2021-03-23"
+   ],
+   "payment_term": [
+    {
+     "days": 45,
+     "basis": "delivery",
+     "instrument": "buyer_po"
+    }
+   ],
+   "objections": [
+    [
+     {
+      "invoice": "SH/905",
+      "raised": "2026-02-21",
+      "raised_quote": "21-02-2026: Complaint emailed to Sai Hydraulics - seal leakage on 3 cylinders from invoice SH/905.",
+      "removed": "2026-03-01",
+      "removed_quote": "01-03-2026: Seals replaced at our plant by Sai Hydraulics; complaint closed.",
+      "in_writing": true
+     }
+    ]
+   ]
+  },
+  "policy_options": [
+   false,
+   true
+  ],
+  "tripwire": {},
+  "case": "C07",
+  "supplier": "Sai Hydraulics",
+  "origin": "reference"
+ },
+ "C08": {
+  "decisions": [
+   {
+    "invoice": "OSE/118",
+    "decision": "AUTO",
+    "disallowed": 0,
+    "range": [
+     0,
+     0
+    ],
+    "primary": {
+     "disallowed": 0,
+     "acceptance": "2026-03-20",
+     "due": "2026-04-10",
+     "applicable": true,
+     "late": false,
+     "trail": [
+      [
+       "APP-01",
+       "supplier is 'micro', manufacturing, registered 2022-02-09"
+      ],
+      [
+       "ACC-01",
+       "delivered 2026-03-20"
+      ],
+      [
+       "DUE-02",
+       "agreed 21 days from delivery = 2026-04-10; cap 2026-05-04; due 2026-04-10"
+      ],
+      [
+       "TAX-1961",
+       "Rs 4,00,000 unpaid at 2026-03-31; Rs 4,00,000 paid by due 2026-04-10; Rs 0 disallowed for FY 2025-26, allowed in year of payment"
+      ]
+     ],
+     "flags": []
+    },
+    "pivotal": [],
+    "scenarios": 2
+   }
+  ],
+  "evidence": {
+   "category": [
+    {
+     "value": "micro",
+     "source": "udyam",
+     "quote": "1 | 2025-26 | Micro | 11/05/2025",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "activity": [
+    {
+     "value": "manufacturing",
+     "source": "udyam",
+     "quote": "MAJOR ACTIVITY : Manufacturing",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "registration_date": [
+    {
+     "value": "2022-02-09",
+     "source": "udyam",
+     "quote": "DATE OF UDYAM REGISTRATION : 09/02/2022",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "payment_term": [
+    {
+     "value": {
+      "days": 21,
+      "basis": "delivery",
+      "instrument": "buyer_po"
+     },
+     "source": "po",
+     "quote": "Payment: 50% advance with order; balance within twenty-one days of delivery.",
+     "origin": "reference",
+     "fails": []
+    },
+    {
+     "value": {
+      "days": null,
+      "basis": null,
+      "instrument": "none"
+     },
+     "source": "po",
+     "quote": "",
+     "origin": "regex",
+     "fails": [
+      "quote not found verbatim in source"
+     ]
+    }
+   ],
+   "objections": [
+    {
+     "value": [],
+     "source": "notes",
+     "quote": "",
+     "origin": "reference",
+     "fails": []
+    }
+   ]
+  },
+  "guards_tripped": [],
+  "options": {
+   "category": [
+    "micro"
+   ],
+   "activity": [
+    "manufacturing"
+   ],
+   "registration_date": [
+    "2022-02-09"
+   ],
+   "payment_term": [
+    {
+     "days": 21,
+     "basis": "delivery",
+     "instrument": "buyer_po"
+    }
+   ],
+   "objections": [
+    []
+   ]
+  },
+  "policy_options": [
+   false,
+   true
+  ],
+  "tripwire": {},
+  "case": "C08",
+  "supplier": "Om Sai Electricals",
+  "origin": "reference"
+ },
+ "C09": {
+  "decisions": [
+   {
+    "invoice": "LPW/2602",
+    "decision": "REVIEW",
+    "disallowed": null,
+    "range": [
+     0,
+     295000
+    ],
+    "primary": {
+     "disallowed": 295000,
+     "acceptance": "2026-03-01",
+     "due": "2026-03-16",
+     "applicable": true,
+     "late": true,
+     "trail": [
+      [
+       "APP-01",
+       "supplier is 'small', manufacturing, registered 2020-07-27"
+      ],
+      [
+       "ACC-01",
+       "delivered 2026-03-01"
+      ],
+      [
+       "DUE-03",
+       "term only on supplier invoice; treated as NO agreement per policy"
+      ],
+      [
+       "DUE-01",
+       "no written agreement: due 2026-03-16"
+      ],
+      [
+       "TAX-1961",
+       "Rs 2,95,000 unpaid at 2026-03-31; Rs 0 paid by due 2026-03-16; Rs 2,95,000 disallowed for FY 2025-26, allowed in year of payment"
+      ]
+     ],
+     "flags": []
+    },
+    "pivotal": [
+     {
+      "fact": "_policy",
+      "readings": [
+       {
+        "value": false,
+        "disallowed": 295000
+       },
+       {
+        "value": true,
+        "disallowed": 0
+       }
+      ]
+     }
+    ],
+    "scenarios": 2
+   }
+  ],
+  "evidence": {
+   "category": [
+    {
+     "value": "small",
+     "source": "udyam",
+     "quote": "1 | 2025-26 | Small | 05/05/2025",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "activity": [
+    {
+     "value": "manufacturing",
+     "source": "udyam",
+     "quote": "MAJOR ACTIVITY : Manufacturing",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "registration_date": [
+    {
+     "value": "2020-07-27",
+     "source": "udyam",
+     "quote": "DATE OF UDYAM REGISTRATION : 27/07/2020",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "payment_term": [
+    {
+     "value": {
+      "days": 45,
+      "basis": "invoice",
+      "instrument": "supplier_invoice_only"
+     },
+     "source": "invoice",
+     "quote": "Terms: Payment due within 45 days of invoice. Interest @18% p.a. thereafter.",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "objections": [
+    {
+     "value": [],
+     "source": "notes",
+     "quote": "",
+     "origin": "reference",
+     "fails": []
+    }
+   ]
+  },
+  "guards_tripped": [],
+  "options": {
+   "category": [
+    "small"
+   ],
+   "activity": [
+    "manufacturing"
+   ],
+   "registration_date": [
+    "2020-07-27"
+   ],
+   "payment_term": [
+    {
+     "days": 45,
+     "basis": "invoice",
+     "instrument": "supplier_invoice_only"
+    }
+   ],
+   "objections": [
+    []
+   ]
+  },
+  "policy_options": [
+   false,
+   true
+  ],
+  "tripwire": {},
+  "case": "C09",
+  "supplier": "Laxmi Packaging Works",
+  "origin": "reference"
+ },
+ "C10": {
+  "decisions": [
+   {
+    "invoice": "NF/0571",
+    "decision": "AUTO",
+    "disallowed": 0,
+    "range": [
+     0,
+     0
+    ],
+    "primary": {
+     "disallowed": 0,
+     "acceptance": "2026-03-02",
+     "due": "2026-04-01",
+     "applicable": false,
+     "late": true,
+     "trail": [
+      [
+       "APP-01",
+       "supplier is 'none' for FY 2025-26: not a micro/small 'supplier'"
+      ],
+      [
+       "APP-03",
+       "Udyam registration 2026-04-15 is after the order date 2026-02-10"
+      ],
+      [
+       "ACC-01",
+       "delivered 2026-03-02"
+      ],
+      [
+       "DUE-02",
+       "agreed 30 days from delivery = 2026-04-01; cap 2026-04-16; due 2026-04-01"
+      ]
+     ],
+     "flags": []
+    },
+    "pivotal": [],
+    "scenarios": 2
+   }
+  ],
+  "evidence": {
+   "category": [
+    {
+     "value": "none",
+     "source": "udyam",
+     "quote": "SNo. | Classification Year | Enterprise Type | Classification Date",
+     "origin": "reference",
+     "fails": []
+    },
+    {
+     "value": "micro",
+     "source": "udyam",
+     "quote": "1 | 2026-27 | Micro | 15/04/2026",
+     "origin": "regex",
+     "fails": [
+      "quote is not the 2025-26 row"
+     ]
+    }
+   ],
+   "activity": [
+    {
+     "value": "manufacturing",
+     "source": "udyam",
+     "quote": "MAJOR ACTIVITY : Manufacturing",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "registration_date": [
+    {
+     "value": "2026-04-15",
+     "source": "udyam",
+     "quote": "DATE OF UDYAM REGISTRATION : 15/04/2026",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "payment_term": [
+    {
+     "value": {
+      "days": 30,
+      "basis": "delivery",
+      "instrument": "buyer_po"
+     },
+     "source": "po",
+     "quote": "Payment within 30 days of delivery.",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "objections": [
+    {
+     "value": [],
+     "source": "notes",
+     "quote": "",
+     "origin": "reference",
+     "fails": []
+    }
+   ]
+  },
+  "guards_tripped": [],
+  "options": {
+   "category": [
+    "none"
+   ],
+   "activity": [
+    "manufacturing"
+   ],
+   "registration_date": [
+    "2026-04-15"
+   ],
+   "payment_term": [
+    {
+     "days": 30,
+     "basis": "delivery",
+     "instrument": "buyer_po"
+    }
+   ],
+   "objections": [
+    []
+   ]
+  },
+  "policy_options": [
+   false,
+   true
+  ],
+  "tripwire": {},
+  "case": "C10",
+  "supplier": "Navkar Fasteners",
+  "origin": "reference"
+ },
+ "C11": {
+  "decisions": [
+   {
+    "invoice": "DIG/7710",
+    "decision": "AUTO",
+    "disallowed": 0,
+    "range": [
+     0,
+     0
+    ],
+    "primary": {
+     "disallowed": 0,
+     "acceptance": "2025-12-01",
+     "due": "2025-12-31",
+     "applicable": true,
+     "late": true,
+     "trail": [
+      [
+       "APP-01",
+       "supplier is 'micro', manufacturing, registered 2020-11-30"
+      ],
+      [
+       "ACC-01",
+       "delivered 2025-12-01"
+      ],
+      [
+       "DUE-02",
+       "agreed 30 days from delivery = 2025-12-31; cap 2026-01-15; due 2025-12-31"
+      ],
+      [
+       "TAX-1961",
+       "fully paid by 2026-03-31: deduction allowed this year (paid late: MSMED interest exposure)"
+      ]
+     ],
+     "flags": []
+    },
+    "pivotal": [],
+    "scenarios": 2
+   }
+  ],
+  "evidence": {
+   "category": [
+    {
+     "value": "micro",
+     "source": "udyam",
+     "quote": "1 | 2025-26 | Micro | 02/05/2025",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "activity": [
+    {
+     "value": "manufacturing",
+     "source": "udyam",
+     "quote": "MAJOR ACTIVITY : Manufacturing",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "registration_date": [
+    {
+     "value": "2020-11-30",
+     "source": "udyam",
+     "quote": "DATE OF UDYAM REGISTRATION : 30/11/2020",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "payment_term": [
+    {
+     "value": {
+      "days": 30,
+      "basis": "delivery",
+      "instrument": "buyer_po"
+     },
+     "source": "po",
+     "quote": "Credit period: 30 days from delivery.",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "objections": [
+    {
+     "value": [],
+     "source": "notes",
+     "quote": "",
+     "origin": "reference",
+     "fails": []
+    }
+   ]
+  },
+  "guards_tripped": [],
+  "options": {
+   "category": [
+    "micro"
+   ],
+   "activity": [
+    "manufacturing"
+   ],
+   "registration_date": [
+    "2020-11-30"
+   ],
+   "payment_term": [
+    {
+     "days": 30,
+     "basis": "delivery",
+     "instrument": "buyer_po"
+    }
+   ],
+   "objections": [
+    []
+   ]
+  },
+  "policy_options": [
+   false,
+   true
+  ],
+  "tripwire": {},
+  "case": "C11",
+  "supplier": "Durga Industrial Gases",
+  "origin": "reference"
+ },
+ "C12": {
+  "decisions": [
+   {
+    "invoice": "VCT/0093",
+    "decision": "AUTO",
+    "disallowed": 0,
+    "range": [
+     0,
+     0
+    ],
+    "primary": {
+     "disallowed": 0,
+     "acceptance": "2026-03-01",
+     "due": "2026-03-31",
+     "applicable": false,
+     "late": true,
+     "trail": [
+      [
+       "APP-04",
+       "capital purchase: outside s.43B(h) under firm policy"
+      ],
+      [
+       "ACC-01",
+       "delivered 2026-03-01"
+      ],
+      [
+       "DUE-02",
+       "agreed 30 days from acceptance = 2026-03-31; cap 2026-04-15; due 2026-03-31"
+      ]
+     ],
+     "flags": []
+    },
+    "pivotal": [],
+    "scenarios": 4
+   }
+  ],
+  "evidence": {
+   "category": [
+    {
+     "value": "small",
+     "source": "udyam",
+     "quote": "1 | 2025-26 | Small | 10/05/2025",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "activity": [
+    {
+     "value": "manufacturing",
+     "source": "udyam",
+     "quote": "MAJOR ACTIVITY : Manufacturing",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "registration_date": [
+    {
+     "value": "2019-02-14",
+     "source": "udyam",
+     "quote": "DATE OF UDYAM REGISTRATION : 14/02/2019",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "payment_term": [
+    {
+     "value": {
+      "days": 30,
+      "basis": "other",
+      "instrument": "buyer_po"
+     },
+     "source": "po",
+     "quote": "Payment within 30 days of installation.",
+     "origin": "reference",
+     "fails": []
+    },
+    {
+     "value": {
+      "days": 30,
+      "basis": "acceptance",
+      "instrument": "buyer_po"
+     },
+     "source": "po",
+     "quote": "Payment within 30 days of installation.",
+     "origin": "regex",
+     "fails": []
+    }
+   ],
+   "objections": [
+    {
+     "value": [],
+     "source": "notes",
+     "quote": "",
+     "origin": "reference",
+     "fails": []
+    }
+   ]
+  },
+  "guards_tripped": [],
+  "options": {
+   "category": [
+    "small"
+   ],
+   "activity": [
+    "manufacturing"
+   ],
+   "registration_date": [
+    "2019-02-14"
+   ],
+   "payment_term": [
+    {
+     "days": 30,
+     "basis": "acceptance",
+     "instrument": "buyer_po"
+    },
+    {
+     "days": 45,
+     "basis": "acceptance",
+     "instrument": "buyer_po"
+    }
+   ],
+   "objections": [
+    []
+   ]
+  },
+  "policy_options": [
+   false,
+   true
+  ],
+  "tripwire": {},
+  "case": "C12",
+  "supplier": "Vishwakarma CNC Tools",
+  "origin": "reference"
+ },
+ "C13": {
+  "decisions": [
+   {
+    "invoice": "PHT/1544",
+    "decision": "AUTO",
+    "disallowed": 240000,
+    "range": [
+     240000,
+     240000
+    ],
+    "primary": {
+     "disallowed": 240000,
+     "acceptance": "2026-01-15",
+     "due": "2026-02-14",
+     "applicable": true,
+     "late": true,
+     "trail": [
+      [
+       "APP-01",
+       "supplier is 'micro', services, registered 2021-10-06"
+      ],
+      [
+       "ACC-01",
+       "delivered 2026-01-15"
+      ],
+      [
+       "DUE-02",
+       "agreed 30 days from delivery = 2026-02-14; cap 2026-03-01; due 2026-02-14"
+      ],
+      [
+       "TAX-1961",
+       "Rs 2,40,000 unpaid at 2026-03-31; Rs 0 paid by due 2026-02-14; Rs 2,40,000 disallowed for FY 2025-26, allowed in year of payment"
+      ]
+     ],
+     "flags": []
+    },
+    "pivotal": [],
+    "scenarios": 2
+   }
+  ],
+  "evidence": {
+   "category": [
+    {
+     "value": "micro",
+     "source": "udyam",
+     "quote": "1 | 2025-26 | Micro | 16/04/2025",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "activity": [
+    {
+     "value": "services",
+     "source": "udyam",
+     "quote": "MAJOR ACTIVITY : Services",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "registration_date": [
+    {
+     "value": "2021-10-06",
+     "source": "udyam",
+     "quote": "DATE OF UDYAM REGISTRATION : 06/10/2021",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "payment_term": [
+    {
+     "value": {
+      "days": 30,
+      "basis": "delivery",
+      "instrument": "buyer_po"
+     },
+     "source": "po",
+     "quote": "Payment within 30 days of receipt of processed material.",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "objections": [
+    {
+     "value": [],
+     "source": "notes",
+     "quote": "",
+     "origin": "reference",
+     "fails": []
+    }
+   ]
+  },
+  "guards_tripped": [],
+  "options": {
+   "category": [
+    "micro"
+   ],
+   "activity": [
+    "services"
+   ],
+   "registration_date": [
+    "2021-10-06"
+   ],
+   "payment_term": [
+    {
+     "days": 30,
+     "basis": "delivery",
+     "instrument": "buyer_po"
+    }
+   ],
+   "objections": [
+    []
+   ]
+  },
+  "policy_options": [
+   false,
+   true
+  ],
+  "tripwire": {},
+  "case": "C13",
+  "supplier": "Pioneer Heat Treaters",
+  "origin": "reference"
+ },
+ "C14": {
+  "decisions": [
+   {
+    "invoice": "SRR/0318",
+    "decision": "AUTO",
+    "disallowed": 1400000,
+    "range": [
+     1400000,
+     1400000
+    ],
+    "primary": {
+     "disallowed": 1400000,
+     "acceptance": "2026-03-10",
+     "due": "2026-04-24",
+     "applicable": true,
+     "late": true,
+     "trail": [
+      [
+       "APP-01",
+       "supplier is 'small', manufacturing, registered 2019-08-19"
+      ],
+      [
+       "ACC-01",
+       "delivered 2026-03-10"
+      ],
+      [
+       "DUE-02",
+       "agreed 45 days from month_end = 2026-05-15; cap 2026-04-24; due 2026-04-24"
+      ],
+      [
+       "TAX-1961",
+       "Rs 14,00,000 unpaid at 2026-03-31; Rs 0 paid by due 2026-04-24; Rs 14,00,000 disallowed for FY 2025-26, allowed in year of payment"
+      ]
+     ],
+     "flags": []
+    },
+    "pivotal": [],
+    "scenarios": 2
+   }
+  ],
+  "evidence": {
+   "category": [
+    {
+     "value": "small",
+     "source": "udyam",
+     "quote": "1 | 2025-26 | Small | 03/05/2025",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "activity": [
+    {
+     "value": "manufacturing",
+     "source": "udyam",
+     "quote": "MAJOR ACTIVITY : Manufacturing",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "registration_date": [
+    {
+     "value": "2019-08-19",
+     "source": "udyam",
+     "quote": "DATE OF UDYAM REGISTRATION : 19/08/2019",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "payment_term": [
+    {
+     "value": {
+      "days": 45,
+      "basis": "month_end",
+      "instrument": "buyer_po"
+     },
+     "source": "po",
+     "quote": "Payment terms: Net 45 EOM.",
+     "origin": "reference",
+     "fails": []
+    },
+    {
+     "value": {
+      "days": null,
+      "basis": null,
+      "instrument": "none"
+     },
+     "source": "po",
+     "quote": "",
+     "origin": "regex",
+     "fails": [
+      "quote not found verbatim in source"
+     ]
+    }
+   ],
+   "objections": [
+    {
+     "value": [],
+     "source": "notes",
+     "quote": "",
+     "origin": "reference",
+     "fails": []
+    }
+   ]
+  },
+  "guards_tripped": [],
+  "options": {
+   "category": [
+    "small"
+   ],
+   "activity": [
+    "manufacturing"
+   ],
+   "registration_date": [
+    "2019-08-19"
+   ],
+   "payment_term": [
+    {
+     "days": 45,
+     "basis": "month_end",
+     "instrument": "buyer_po"
+    }
+   ],
+   "objections": [
+    []
+   ]
+  },
+  "policy_options": [
+   false,
+   true
+  ],
+  "tripwire": {},
+  "case": "C14",
+  "supplier": "Shakti Rolls & Rings",
+  "origin": "reference"
+ },
+ "C15": {
+  "decisions": [
+   {
+    "invoice": "GWP/4417",
+    "decision": "AUTO",
+    "disallowed": 0,
+    "range": [
+     0,
+     0
+    ],
+    "primary": {
+     "disallowed": 0,
+     "acceptance": "2026-03-15",
+     "due": "2026-04-14",
+     "applicable": true,
+     "late": false,
+     "trail": [
+      [
+       "APP-01",
+       "supplier is 'micro', manufacturing, registered 2020-12-12"
+      ],
+      [
+       "ACC-01",
+       "delivered 2026-03-15"
+      ],
+      [
+       "DUE-02",
+       "agreed 30 days from delivery = 2026-04-14; cap 2026-04-29; due 2026-04-14"
+      ],
+      [
+       "TAX-1961",
+       "Rs 3,30,000 unpaid at 2026-03-31; Rs 3,30,000 paid by due 2026-04-14; Rs 0 disallowed for FY 2025-26, allowed in year of payment"
+      ]
+     ],
+     "flags": []
+    },
+    "pivotal": [],
+    "scenarios": 2
+   }
+  ],
+  "evidence": {
+   "category": [
+    {
+     "value": "micro",
+     "source": "udyam",
+     "quote": "1 | 2025-26 | Micro | 22/04/2025",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "activity": [
+    {
+     "value": "manufacturing",
+     "source": "udyam",
+     "quote": "MAJOR ACTIVITY : Manufacturing",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "registration_date": [
+    {
+     "value": "2020-12-12",
+     "source": "udyam",
+     "quote": "DATE OF UDYAM REGISTRATION : 12/12/2020",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "payment_term": [
+    {
+     "value": {
+      "days": 30,
+      "basis": "delivery",
+      "instrument": "buyer_po"
+     },
+     "source": "po",
+     "quote": "भुगतान शर्तें: माल प्राप्ति के 30 दिनों के भीतर भुगतान किया जाएगा।",
+     "origin": "reference",
+     "fails": []
+    },
+    {
+     "value": {
+      "days": null,
+      "basis": null,
+      "instrument": "none"
+     },
+     "source": "po",
+     "quote": "",
+     "origin": "regex",
+     "fails": [
+      "quote not found verbatim in source"
+     ]
+    }
+   ],
+   "objections": [
+    {
+     "value": [],
+     "source": "notes",
+     "quote": "",
+     "origin": "reference",
+     "fails": []
+    }
+   ]
+  },
+  "guards_tripped": [],
+  "options": {
+   "category": [
+    "micro"
+   ],
+   "activity": [
+    "manufacturing"
+   ],
+   "registration_date": [
+    "2020-12-12"
+   ],
+   "payment_term": [
+    {
+     "days": 30,
+     "basis": "delivery",
+     "instrument": "buyer_po"
+    }
+   ],
+   "objections": [
+    []
+   ]
+  },
+  "policy_options": [
+   false,
+   true
+  ],
+  "tripwire": {},
+  "case": "C15",
+  "supplier": "Ganga Wire Products",
+  "origin": "reference"
+ },
+ "C16": {
+  "decisions": [
+   {
+    "invoice": "KPS/207",
+    "decision": "AUTO",
+    "disallowed": 560000,
+    "range": [
+     560000,
+     560000
+    ],
+    "primary": {
+     "disallowed": 560000,
+     "acceptance": "2026-03-01",
+     "due": "2026-03-31",
+     "applicable": true,
+     "late": true,
+     "trail": [
+      [
+       "APP-01",
+       "supplier is 'micro', manufacturing, registered 2022-01-25"
+      ],
+      [
+       "ACC-01",
+       "delivered 2026-03-01"
+      ],
+      [
+       "DUE-02",
+       "agreed 30 days from delivery = 2026-03-31; cap 2026-04-15; due 2026-03-31"
+      ],
+      [
+       "TAX-1961",
+       "Rs 5,60,000 unpaid at 2026-03-31; Rs 0 paid by due 2026-03-31; Rs 5,60,000 disallowed for FY 2025-26, allowed in year of payment"
+      ]
+     ],
+     "flags": []
+    },
+    "pivotal": [],
+    "scenarios": 2
+   }
+  ],
+  "evidence": {
+   "category": [
+    {
+     "value": "micro",
+     "source": "udyam",
+     "quote": "1 | 2025-26 | Micro | 09/05/2025",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "activity": [
+    {
+     "value": "manufacturing",
+     "source": "udyam",
+     "quote": "MAJOR ACTIVITY : Manufacturing",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "registration_date": [
+    {
+     "value": "2022-01-25",
+     "source": "udyam",
+     "quote": "DATE OF UDYAM REGISTRATION : 25/01/2022",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "payment_term": [
+    {
+     "value": {
+      "days": 30,
+      "basis": "delivery",
+      "instrument": "buyer_po"
+     },
+     "source": "po",
+     "quote": "Payment within 30 days of delivery.",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "objections": [
+    {
+     "value": [],
+     "source": "notes",
+     "quote": "",
+     "origin": "reference",
+     "fails": []
+    }
+   ]
+  },
+  "guards_tripped": [],
+  "options": {
+   "category": [
+    "micro"
+   ],
+   "activity": [
+    "manufacturing"
+   ],
+   "registration_date": [
+    "2022-01-25"
+   ],
+   "payment_term": [
+    {
+     "days": 30,
+     "basis": "delivery",
+     "instrument": "buyer_po"
+    }
+   ],
+   "objections": [
+    []
+   ]
+  },
+  "policy_options": [
+   false,
+   true
+  ],
+  "tripwire": {},
+  "case": "C16",
+  "supplier": "Krishna Pattern Shop",
+  "origin": "reference"
+ },
+ "C17": {
+  "decisions": [
+   {
+    "invoice": "ACS/03-26",
+    "decision": "AUTO",
+    "disallowed": 110000,
+    "range": [
+     110000,
+     110000
+    ],
+    "primary": {
+     "disallowed": 110000,
+     "acceptance": "2026-03-31",
+     "due": "2026-04-15",
+     "applicable": true,
+     "late": true,
+     "trail": [
+      [
+       "APP-01",
+       "supplier is 'micro', services, registered 2021-07-01"
+      ],
+      [
+       "ACC-01",
+       "delivered 2026-03-31"
+      ],
+      [
+       "DUE-02",
+       "agreed 15 days from acceptance = 2026-04-15; cap 2026-05-15; due 2026-04-15"
+      ],
+      [
+       "TAX-1961",
+       "Rs 1,10,000 unpaid at 2026-03-31; Rs 0 paid by due 2026-04-15; Rs 1,10,000 disallowed for FY 2025-26, allowed in year of payment"
+      ]
+     ],
+     "flags": []
+    },
+    "pivotal": [],
+    "scenarios": 4
+   }
+  ],
+  "evidence": {
+   "category": [
+    {
+     "value": "micro",
+     "source": "udyam",
+     "quote": "1 | 2025-26 | Micro | 28/04/2025",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "activity": [
+    {
+     "value": "services",
+     "source": "udyam",
+     "quote": "MAJOR ACTIVITY : Services",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "registration_date": [
+    {
+     "value": "2021-07-01",
+     "source": "udyam",
+     "quote": "DATE OF UDYAM REGISTRATION : 01/07/2021",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "payment_term": [
+    {
+     "value": {
+      "days": 15,
+      "basis": "other",
+      "instrument": "buyer_po"
+     },
+     "source": "po",
+     "quote": "Payment within 15 days of submission of monthly bill duly certified by the Administration Manager.",
+     "origin": "reference",
+     "fails": []
+    },
+    {
+     "value": {
+      "days": 15,
+      "basis": "acceptance",
+      "instrument": "buyer_po"
+     },
+     "source": "po",
+     "quote": "Payment within 15 days of submission of monthly bill duly certified by the Administration Manager.",
+     "origin": "regex",
+     "fails": []
+    }
+   ],
+   "objections": [
+    {
+     "value": [],
+     "source": "notes",
+     "quote": "",
+     "origin": "reference",
+     "fails": []
+    }
+   ]
+  },
+  "guards_tripped": [],
+  "options": {
+   "category": [
+    "micro"
+   ],
+   "activity": [
+    "services"
+   ],
+   "registration_date": [
+    "2021-07-01"
+   ],
+   "payment_term": [
+    {
+     "days": 15,
+     "basis": "acceptance",
+     "instrument": "buyer_po"
+    },
+    {
+     "days": 45,
+     "basis": "acceptance",
+     "instrument": "buyer_po"
+    }
+   ],
+   "objections": [
+    []
+   ]
+  },
+  "policy_options": [
+   false,
+   true
+  ],
+  "tripwire": {},
+  "case": "C17",
+  "supplier": "Annapurna Canteen Services",
+  "origin": "reference"
+ },
+ "C18": {
+  "decisions": [
+   {
+    "invoice": "SVB/1102",
+    "decision": "AUTO",
+    "disallowed": 0,
+    "range": [
+     0,
+     0
+    ],
+    "primary": {
+     "disallowed": 0,
+     "acceptance": "2026-02-10",
+     "due": "2026-03-27",
+     "applicable": true,
+     "late": true,
+     "trail": [
+      [
+       "APP-01",
+       "supplier is 'small', manufacturing, registered 2020-10-20"
+      ],
+      [
+       "ACC-01",
+       "delivered 2026-02-10"
+      ],
+      [
+       "DUE-02",
+       "agreed 60 days from acceptance = 2026-04-11; cap 2026-03-27; due 2026-03-27"
+      ],
+      [
+       "TAX-1961",
+       "fully paid by 2026-03-31: deduction allowed this year (paid late: MSMED interest exposure)"
+      ]
+     ],
+     "flags": []
+    },
+    "pivotal": [],
+    "scenarios": 2
+   },
+   {
+    "invoice": "SVB/1167",
+    "decision": "AUTO",
+    "disallowed": 420000,
+    "range": [
+     420000,
+     420000
+    ],
+    "primary": {
+     "disallowed": 420000,
+     "acceptance": "2026-03-12",
+     "due": "2026-04-26",
+     "applicable": true,
+     "late": true,
+     "trail": [
+      [
+       "APP-01",
+       "supplier is 'small', manufacturing, registered 2020-10-20"
+      ],
+      [
+       "ACC-01",
+       "delivered 2026-03-12"
+      ],
+      [
+       "DUE-02",
+       "agreed 60 days from acceptance = 2026-05-11; cap 2026-04-26; due 2026-04-26"
+      ],
+      [
+       "TAX-1961",
+       "Rs 7,20,000 unpaid at 2026-03-31; Rs 3,00,000 paid by due 2026-04-26; Rs 4,20,000 disallowed for FY 2025-26, allowed in year of payment"
+      ]
+     ],
+     "flags": []
+    },
+    "pivotal": [],
+    "scenarios": 2
+   }
+  ],
+  "evidence": {
+   "category": [
+    {
+     "value": "small",
+     "source": "udyam",
+     "quote": "2 | 2025-26 | Small | 06/05/2025",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "activity": [
+    {
+     "value": "manufacturing",
+     "source": "udyam",
+     "quote": "MAJOR ACTIVITY : Manufacturing",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "registration_date": [
+    {
+     "value": "2020-10-20",
+     "source": "udyam",
+     "quote": "DATE OF UDYAM REGISTRATION : 20/10/2020",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "payment_term": [
+    {
+     "value": {
+      "days": 60,
+      "basis": "acceptance",
+      "instrument": "buyer_po"
+     },
+     "source": "po",
+     "quote": "Payment within 60 days.",
+     "origin": "reference",
+     "fails": []
+    }
+   ],
+   "objections": [
+    {
+     "value": [],
+     "source": "notes",
+     "quote": "",
+     "origin": "reference",
+     "fails": []
+    }
+   ]
+  },
+  "guards_tripped": [],
+  "options": {
+   "category": [
+    "small"
+   ],
+   "activity": [
+    "manufacturing"
+   ],
+   "registration_date": [
+    "2020-10-20"
+   ],
+   "payment_term": [
+    {
+     "days": 60,
+     "basis": "acceptance",
+     "instrument": "buyer_po"
+    }
+   ],
+   "objections": [
+    []
+   ]
+  },
+  "policy_options": [
+   false,
+   true
+  ],
+  "tripwire": {},
+  "case": "C18",
+  "supplier": "Sri Venkateswara Bearings",
+  "origin": "reference"
+ }
+}

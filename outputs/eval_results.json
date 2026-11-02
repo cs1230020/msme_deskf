@@ -1,0 +1,216 @@
+{
+ "A": {
+  "correct": 19,
+  "total": 19
+ },
+ "B": {
+  "fact_accuracy": {
+   "category": [
+    17,
+    18
+   ],
+   "activity": [
+    17,
+    18
+   ],
+   "registration_date": [
+    18,
+    18
+   ],
+   "payment_term": [
+    12,
+    18
+   ],
+   "objections": [
+    17,
+    18
+   ]
+  },
+  "verdicts": {
+   "correct": 13,
+   "SILENT_ERROR": 6
+  },
+  "misses": [
+   "C03 JPM/045: SILENT_ERROR (No written payment term; the only number near 'payment' is a delivery period (distractor).)",
+   "C04 BST/2290: SILENT_ERROR (Trader registered on Udyam (activity shown as 'Services'; NIC code is wholesale trade) - outside s.15.)",
+   "C06 KR/2231: SILENT_ERROR (Written objection within 15 days moves the day of acceptance to the day it is removed.)",
+   "C08 OSE/118: SILENT_ERROR (Term written in words, with an advance; only the balance is outstanding at year end.)",
+   "C09 LPW/2602: SILENT_ERROR (Term appears ONLY on the supplier's own invoice. Is that a 'written agreement'? A judgment call for the CA.)",
+   "C15 GWP/4417: SILENT_ERROR (Payment clause written in Hindi.)"
+  ]
+ },
+ "B2": {
+  "verdicts": {
+   "correct": 15,
+   "SILENT_ERROR": 1,
+   "review": 3
+  },
+  "misses": [
+   "C03 JPM/045: SILENT_ERROR",
+   "C06 KR/2231: review",
+   "C08 OSE/118: review",
+   "C15 GWP/4417: review"
+  ]
+ },
+ "C": {
+  "verdicts": {
+   "correct": 17,
+   "review": 2
+  },
+  "extra_reviews": [
+   "C03 JPM/045: review; pivotal = ['payment_term']",
+   "C06 KR/2231: review; pivotal = ['objections']"
+  ]
+ },
+ "D": {
+  "runs": 154,
+  "by_arm": {
+   "no guards (trust the reader)": {
+    "correct": 94,
+    "SILENT_ERROR": 60
+   },
+   "guards + sensitivity": {
+    "correct": 83,
+    "review": 67,
+    "SILENT_ERROR": 4
+   },
+   "guards + sensitivity + cross-checks": {
+    "correct": 80,
+    "review": 73,
+    "SILENT_ERROR": 1
+   }
+  },
+  "by_fault": {
+   "no guards (trust the reader)": {
+    "F1 invented quote": {
+     "correct": 45,
+     "SILENT_ERROR": 27
+    },
+    "F2 wrong value, real quote": {
+     "correct": 45,
+     "SILENT_ERROR": 27
+    },
+    "F3 wrong clause, real quote": {
+     "SILENT_ERROR": 5,
+     "correct": 3
+    },
+    "F4 missed objection": {
+     "SILENT_ERROR": 1,
+     "correct": 1
+    }
+   },
+   "guards + sensitivity": {
+    "F1 invented quote": {
+     "correct": 40,
+     "review": 31,
+     "SILENT_ERROR": 1
+    },
+    "F2 wrong value, real quote": {
+     "correct": 40,
+     "review": 32
+    },
+    "F3 wrong clause, real quote": {
+     "review": 4,
+     "SILENT_ERROR": 2,
+     "correct": 2
+    },
+    "F4 missed objection": {
+     "SILENT_ERROR": 1,
+     "correct": 1
+    }
+   },
+   "guards + sensitivity + cross-checks": {
+    "F1 invented quote": {
+     "correct": 38,
+     "review": 34
+    },
+    "F2 wrong value, real quote": {
+     "correct": 38,
+     "review": 34
+    },
+    "F3 wrong clause, real quote": {
+     "review": 4,
+     "SILENT_ERROR": 1,
+     "correct": 3
+    },
+    "F4 missed objection": {
+     "review": 1,
+     "correct": 1
+    }
+   }
+  },
+  "silent": {
+   "no guards (trust the reader)": [
+    "C01 F1 invented quote on payment_term",
+    "C01 F2 wrong value, real quote on payment_term",
+    "C01 F3 wrong clause, real quote on payment_term",
+    "C02 F1 invented quote on category",
+    "C02 F1 invented quote on activity",
+    "C02 F2 wrong value, real quote on category",
+    "C02 F2 wrong value, real quote on activity",
+    "C03 F1 invented quote on category",
+    "C03 F1 invented quote on activity",
+    "C03 F1 invented quote on payment_term",
+    "C03 F2 wrong value, real quote on category",
+    "C03 F2 wrong value, real quote on activity",
+    "C03 F2 wrong value, real quote on payment_term",
+    "C03 F3 wrong clause, real quote on payment_term",
+    "C04 F1 invented quote on activity",
+    "C04 F2 wrong value, real quote on activity",
+    "C04 F3 wrong clause, real quote on activity",
+    "C05 F1 invented quote on category",
+    "C05 F2 wrong value, real quote on category",
+    "C05 F3 wrong clause, real quote on category",
+    "C06 F1 invented quote on payment_term",
+    "C06 F2 wrong value, real quote on payment_term",
+    "C06 F4 missed objection on objections",
+    "C07 F1 invented quote on category",
+    "C07 F1 invented quote on activity",
+    "C07 F2 wrong value, real quote on category",
+    "C07 F2 wrong value, real quote on activity",
+    "C09 F1 invented quote on category",
+    "C09 F1 invented quote on activity",
+    "C09 F1 invented quote on registration_date",
+    "C09 F1 invented quote on payment_term",
+    "C09 F2 wrong value, real quote on category",
+    "C09 F2 wrong value, real quote on activity",
+    "C09 F2 wrong value, real quote on registration_date",
+    "C09 F2 wrong value, real quote on payment_term",
+    "C13 F1 invented quote on category",
+    "C13 F1 invented quote on activity",
+    "C13 F2 wrong value, real quote on category",
+    "C13 F2 wrong value, real quote on activity",
+    "C14 F1 invented quote on category",
+    "C14 F1 invented quote on activity",
+    "C14 F2 wrong value, real quote on category",
+    "C14 F2 wrong value, real quote on activity",
+    "C15 F1 invented quote on payment_term",
+    "C15 F2 wrong value, real quote on payment_term",
+    "C16 F1 invented quote on category",
+    "C16 F1 invented quote on activity",
+    "C16 F2 wrong value, real quote on category",
+    "C16 F2 wrong value, real quote on activity",
+    "C16 F3 wrong clause, real quote on category",
+    "C17 F1 invented quote on category",
+    "C17 F1 invented quote on activity",
+    "C17 F2 wrong value, real quote on category",
+    "C17 F2 wrong value, real quote on activity",
+    "C18 F1 invented quote on category",
+    "C18 F1 invented quote on activity",
+    "C18 F1 invented quote on payment_term",
+    "C18 F2 wrong value, real quote on category",
+    "C18 F2 wrong value, real quote on activity",
+    "C18 F2 wrong value, real quote on payment_term"
+   ],
+   "guards + sensitivity": [
+    "C03 F3 wrong clause, real quote on payment_term",
+    "C04 F1 invented quote on activity",
+    "C04 F3 wrong clause, real quote on activity",
+    "C06 F4 missed objection on objections"
+   ],
+   "guards + sensitivity + cross-checks": [
+    "C03 F3 wrong clause, real quote on payment_term"
+   ]
+  }
+ }
+}

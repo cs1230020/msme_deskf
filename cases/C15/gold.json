@@ -1,0 +1,42 @@
+{
+  "case": "C15",
+  "tests": "Payment clause written in Hindi.",
+  "facts": {
+    "category": {
+      "value": "micro",
+      "source": "udyam",
+      "quote": "1 | 2025-26 | Micro | 22/04/2025"
+    },
+    "activity": {
+      "value": "manufacturing",
+      "source": "udyam",
+      "quote": "MAJOR ACTIVITY : Manufacturing"
+    },
+    "registration_date": {
+      "value": "2020-12-12",
+      "source": "udyam",
+      "quote": "DATE OF UDYAM REGISTRATION : 12/12/2020"
+    },
+    "payment_term": {
+      "value": {
+        "days": 30,
+        "basis": "delivery",
+        "instrument": "buyer_po"
+      },
+      "source": "po",
+      "quote": "भुगतान शर्तें: माल प्राप्ति के 30 दिनों के भीतर भुगतान किया जाएगा।"
+    },
+    "objections": {
+      "value": [],
+      "source": "notes",
+      "quote": ""
+    }
+  },
+  "expected": {
+    "GWP/4417": {
+      "decision": "AUTO",
+      "disallowed": 0
+    }
+  },
+  "distractors": {}
+}

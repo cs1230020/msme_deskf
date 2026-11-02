@@ -1,0 +1,22 @@
+{
+  "case": "C03",
+  "supplier": "Jyoti Precision Machining",
+  "fy": "2025-26",
+  "po_date": "2026-03-02",
+  "capital": false,
+  "invoices": [
+    {
+      "no": "JPM/045",
+      "delivery": "2026-03-25",
+      "invoice_date": "2026-03-25",
+      "amount": 175000
+    }
+  ],
+  "payments": [
+    {
+      "invoice": "JPM/045",
+      "date": "2026-04-15",
+      "amount": 175000
+    }
+  ]
+}

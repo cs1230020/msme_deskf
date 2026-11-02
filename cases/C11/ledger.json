@@ -1,0 +1,22 @@
+{
+  "case": "C11",
+  "supplier": "Durga Industrial Gases",
+  "fy": "2025-26",
+  "po_date": "2025-11-20",
+  "capital": false,
+  "invoices": [
+    {
+      "no": "DIG/7710",
+      "delivery": "2025-12-01",
+      "invoice_date": "2025-12-01",
+      "amount": 90000
+    }
+  ],
+  "payments": [
+    {
+      "invoice": "DIG/7710",
+      "date": "2026-02-20",
+      "amount": 90000
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "case": "C08",
+  "supplier": "Om Sai Electricals",
+  "fy": "2025-26",
+  "po_date": "2026-02-25",
+  "capital": false,
+  "invoices": [
+    {
+      "no": "OSE/118",
+      "delivery": "2026-03-20",
+      "invoice_date": "2026-03-20",
+      "amount": 800000
+    }
+  ],
+  "payments": [
+    {
+      "invoice": "OSE/118",
+      "date": "2026-02-25",
+      "amount": 400000
+    },
+    {
+      "invoice": "OSE/118",
+      "date": "2026-04-08",
+      "amount": 400000
+    }
+  ]
+}
