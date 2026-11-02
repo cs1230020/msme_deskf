@@ -69,7 +69,7 @@ the harness retries with back-off and caches every response so a re-run costs no
 | `eval/run_eval.py` | Evaluation A–E |
 | `desk/` | Clickable review-desk mock (`build_desk.py` turns a real run into `review_desk.html`) |
 | `brief/` | The submitted brief: `Tresata_take_home_brief.pdf` (4 pages + 1-page appendix), its LaTeX source `brief.tex` and the diagram `architecture.png` (compile with pdflatex) |
-| `llm_logs/` | My LLM conversation log (Google Gemini), exported as PDF |
+| `llm_logs/` | My LLM conversation log (Google Gemini): [shared chat](https://share.gemini.google/ee9f6krA66sX), also saved as a PDF |
 | `outputs/` | Reports, working papers, the run used by the review desk |
 
 ## Test cases (all synthetic; buyer "Kestrel Forgings Pvt Ltd" is fictional; FY 2025-26; audit cut-off 30-Sep-2026)
